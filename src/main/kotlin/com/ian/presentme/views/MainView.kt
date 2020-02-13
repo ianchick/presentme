@@ -3,6 +3,7 @@ package com.ian.presentme.views
 import com.google.gson.Gson
 import com.ian.presentme.app.PresentMeApp
 import com.ian.presentme.app.PresentMeApp.Companion.getPreferences
+import com.ian.presentme.app.PresentMeApp.Companion.setPreference
 import com.ian.presentme.app.Styles
 import com.ian.presentme.events.UpdateSetListEvent
 import com.ian.presentme.events.UpdateSongListEvent
@@ -10,6 +11,7 @@ import com.ian.presentme.models.SetList
 import com.ian.presentme.models.Slide
 import com.ian.presentme.models.Song
 import javafx.scene.control.Button
+import javafx.scene.control.Label
 import javafx.scene.control.ListView
 import javafx.scene.control.ScrollPane
 import javafx.scene.layout.BorderPane
@@ -25,6 +27,7 @@ class MainView : View("PresentMe") {
     private val main_slides_flow_pane: FlowPane by fxid()
     private val main_slides_scroll_wrapper: ScrollPane by fxid()
     private val main_set_list_create: Button by fxid()
+    private val main_set_list_view_label: Label by fxid()
 
     // Currently active Set List
     private var activeSet: SetList? = null
@@ -49,15 +52,18 @@ class MainView : View("PresentMe") {
         // Populate song list when first opening the app
         populateSongList()
         // Active set list set on open and when update event fires.
-        val setName = getPreferences(PresentMeApp.ACTIVE_SET)
-        if (setName.isNotEmpty()) {
-            val setFile = File(PresentMeApp.SETS_DIR_KEY).resolve(setName)
+        val activeSetName = getPreferences(PresentMeApp.ACTIVE_SET)
+        if (activeSetName.isNotEmpty()) {
+            val setFile = File(PresentMeApp.SETS_DIR_KEY).resolve(activeSetName)
             if (setFile.exists()) {
                 activeSet = Gson().fromJson(setFile.readText(), SetList::class.java)
+                main_set_list_view_label.text = activeSetName
             }
         }
         subscribe<UpdateSetListEvent> { event ->
             activeSet = event.setList
+            setPreference(PresentMeApp.ACTIVE_SET, event.setList.title)
+            main_set_list_view_label.text = event.setList.title
         }
         main_set_list_create.action {
             CreateSetListView().openWindow()

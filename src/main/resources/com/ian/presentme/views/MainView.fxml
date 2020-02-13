@@ -20,7 +20,7 @@
             </VBox>
             <!--Currently active set list-->
             <VBox alignment="TOP_CENTER" spacing="5">
-                <Label styleClass="heading" text="Set List" />
+                <Label fx:id="main_set_list_view_label" styleClass="heading" text="Set List" />
                 <HBox spacing="5">
                     <TextField fx:id="main_set_list_view_search_field" promptText="Search..." />
                     <Button fx:id="main_set_list_create" text="New Set"/>
