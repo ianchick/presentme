@@ -2,26 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1beba19-492e-4df0-8bce-e71a862c743f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/events/UpdateSongListEvent.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/CreateSongView.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/MainMenuBar.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/MainToolbar.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/CreateSongView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/com_google_code_gson_gson_2_8_5.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/app/MyApp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/app/MyApp.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/app/models/Slide.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/models/Slide.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/app/models/Song.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/models/Song.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/view/MainView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/MainView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/view/MainMenuBar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/MainMenuBar.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/view/MainToolbar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/MainToolbar.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/view/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/MainView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/MyApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/MyApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/models/Slide.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/models/Song.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/view/MainMenuBar.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/view/MainToolbar.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/view/MainView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/view/MainView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PresentMe.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PresentMe.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/app/Styles.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/app/Styles.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/models/Slide.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/models/Slide.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/models/Song.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/models/Song.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/CreateSongView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/CreateSongView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/Styles$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/Styles$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/Styles$Companion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/Styles$Companion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/Styles.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/Styles.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,20 +58,24 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.side.proportion" value="0.39171976" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>

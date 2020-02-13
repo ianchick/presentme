@@ -1,5 +1,5 @@
 package com.ian.presentme.models
 
-class Song(title: String, artist: String = "") {
+data class Song(val title: String, val artist: String = "") {
     var slides: MutableList<Slide>? = null
 }
