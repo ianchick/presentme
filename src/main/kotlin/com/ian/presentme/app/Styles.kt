@@ -12,6 +12,7 @@ class Styles : Stylesheet() {
     }
 
     init {
+        // List headers
         label and heading {
             padding = box(5.px)
             fontSize = 12.px

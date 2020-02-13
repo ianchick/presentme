@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1beba19-492e-4df0-8bce-e71a862c743f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/app/models/Slide.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/app/models/Song.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/app/MyApp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/app/MyApp.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/app/Styles.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/app/Styles.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/view/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/view/MainView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/view/MainMenuBar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ian/presentme/view/MainMenuBar.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/view/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ian/presentme/view/MainView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/MyApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/MyApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/Styles$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/Styles$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/Styles.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/Styles.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,8 +30,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Class" />
         <option value="FxmlFile" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -51,6 +54,7 @@
   <component name="ProjectId" id="1Xjw4GUXfjXdrhVYdsI4Kkikzr2" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="GoToFile.includeJavaFiles" value="false" />
