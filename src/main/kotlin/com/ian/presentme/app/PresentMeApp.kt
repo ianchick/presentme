@@ -18,7 +18,6 @@ class PresentMeApp: App(MainView::class, Styles::class) {
         const val WINDOW_SIZE_WIDTH = "windowSizeWidth"
         const val WINDOW_SIZE_HEIGHT = "windowSizeHeight"
 
-
         /**
          * Get preference.properties value of given key
          *

@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 <BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
-
     <top>
-        <VBox fx:id="main_top_wrapper">
-        </VBox>
+        <VBox fx:id="main_top_wrapper"/>
     </top>
 
     <left>
         <SplitPane fx:id="main_left_wrapper" dividerPositions="0.5" orientation="VERTICAL">
+            <padding><Insets top="10" right="5" bottom="5" left="10"/></padding>
             <!--List of all songs-->
-            <VBox alignment="TOP_CENTER">
+            <VBox alignment="TOP_CENTER" spacing="5">
                 <Label styleClass="heading" text="Songs" />
                 <TextField fx:id="main_songs_list_view_search_field" promptText="Search..." />
                 <ListView fx:id="main_songs_list_view" />
             </VBox>
             <!--Currently active set list-->
-            <VBox alignment="TOP_CENTER">
+            <VBox alignment="TOP_CENTER" spacing="5">
                 <Label styleClass="heading" text="Set List" />
-                <TextField fx:id="main_set_list_view_search_field" promptText="Search..." />
+                <HBox spacing="5">
+                    <TextField fx:id="main_set_list_view_search_field" promptText="Search..." />
+                    <Button fx:id="main_set_list_create" text="New Set"/>
+                </HBox>
                 <ListView fx:id="main_set_list_view" />
             </VBox>
         </SplitPane>

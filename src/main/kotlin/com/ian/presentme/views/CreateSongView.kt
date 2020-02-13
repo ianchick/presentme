@@ -1,6 +1,7 @@
 package com.ian.presentme.views
 
 import com.google.gson.GsonBuilder
+import com.ian.presentme.app.PresentMeApp
 import com.ian.presentme.app.Styles
 import com.ian.presentme.events.UpdateSongListEvent
 import com.ian.presentme.models.Slide
@@ -46,9 +47,9 @@ class CreateSongView : View("Create New Song") {
             song.slides = songSlidesList
             val gson = GsonBuilder().setPrettyPrinting().create()
             val jsonString = gson.toJson(song)
-            val file = File("songs/$title")
+            val file = File(PresentMeApp.getPreferences(PresentMeApp.SONGS_DIR_KEY)+ "/$title")
             file.writeText(jsonString)
-            fire(UpdateSongListEvent())
+            fire(UpdateSongListEvent(song))
 
             close()
         }

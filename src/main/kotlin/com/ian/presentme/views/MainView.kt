@@ -4,9 +4,12 @@ import com.google.gson.Gson
 import com.ian.presentme.app.PresentMeApp
 import com.ian.presentme.app.PresentMeApp.Companion.getPreferences
 import com.ian.presentme.app.Styles
+import com.ian.presentme.events.UpdateSetListEvent
 import com.ian.presentme.events.UpdateSongListEvent
+import com.ian.presentme.models.SetList
 import com.ian.presentme.models.Slide
 import com.ian.presentme.models.Song
+import javafx.scene.control.Button
 import javafx.scene.control.ListView
 import javafx.scene.control.ScrollPane
 import javafx.scene.layout.BorderPane
@@ -21,6 +24,10 @@ class MainView : View("PresentMe") {
     private val main_songs_list_view: ListView<Song> by fxid()
     private val main_slides_flow_pane: FlowPane by fxid()
     private val main_slides_scroll_wrapper: ScrollPane by fxid()
+    private val main_set_list_create: Button by fxid()
+
+    // Currently active Set List
+    private var activeSet: SetList? = null
 
     /**
      * Initialize toolbars
@@ -29,8 +36,9 @@ class MainView : View("PresentMe") {
     init {
         main_top_wrapper.add(MainMenuBar::class)
         main_top_wrapper.add(MainToolbar::class)
-        subscribe<UpdateSongListEvent> {
+        subscribe<UpdateSongListEvent> { event ->
             populateSongList()
+            main_songs_list_view.selectionModel.select(event.song)
         }
 
         setSongListEventListeners()
@@ -40,6 +48,20 @@ class MainView : View("PresentMe") {
 
         // Populate song list when first opening the app
         populateSongList()
+        // Active set list set on open and when update event fires.
+        val setName = getPreferences(PresentMeApp.ACTIVE_SET)
+        if (setName.isNotEmpty()) {
+            val setFile = File(PresentMeApp.SETS_DIR_KEY).resolve(setName)
+            if (setFile.exists()) {
+                activeSet = Gson().fromJson(setFile.readText(), SetList::class.java)
+            }
+        }
+        subscribe<UpdateSetListEvent> { event ->
+            activeSet = event.setList
+        }
+        main_set_list_create.action {
+            CreateSetListView().openWindow()
+        }
     }
 
     /**
@@ -63,8 +85,10 @@ class MainView : View("PresentMe") {
      */
     private fun setSongListEventListeners() {
         main_songs_list_view.selectionModel.selectedItemProperty().addListener(ChangeListener { observable, oldValue, newValue ->
-            newValue.slides?.let {
-                populateSlidesView(it)
+            newValue?.let {song ->
+                song.slides?.let {
+                    populateSlidesView(it)
+                }
             }
         })
         // Double click
