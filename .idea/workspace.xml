@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1beba19-492e-4df0-8bce-e71a862c743f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/models/Set.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/app/MyApp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/app/PresentMeApp.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/MainView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/MainView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/CreateSongView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/CreateSongView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/MainMenuBar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/MainMenuBar.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/MainToolbar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/MainToolbar.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/MainView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/SlidePane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/SlidePane.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/MyApp.class" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,8 +28,8 @@
       <list>
         <option value="Class" />
         <option value="FxmlFile" />
-        <option value="Kotlin File" />
         <option value="Kotlin Class" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -233,7 +230,7 @@
       </method>
     </configuration>
     <configuration name="PresentMe" type="TORNADOFX_RUNCONFIGURATION" factoryName="TornadoFX Configuration Factory" run-type="App" live-views="false" live-stylesheets="false" dump-stylesheets="false">
-      <option name="MAIN_CLASS_NAME" value="com.ian.presentme.app.MyApp" />
+      <option name="MAIN_CLASS_NAME" value="com.ian.presentme.app.PresentMeApp" />
       <module name="PresentMe" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -255,6 +252,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="TornadoFX.PresentMe" />
+      <item itemvalue="TornadoFX.MainView" />
+      <item itemvalue="TornadoFX.MainView (1)" />
+      <item itemvalue="TornadoFX.MainView (2)" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="TornadoFX.MainView (2)" />
@@ -316,7 +319,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

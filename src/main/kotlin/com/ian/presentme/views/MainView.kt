@@ -1,7 +1,8 @@
 package com.ian.presentme.views
 
 import com.google.gson.Gson
-import com.ian.presentme.app.MyApp
+import com.ian.presentme.app.PresentMeApp
+import com.ian.presentme.app.PresentMeApp.Companion.getPreferences
 import com.ian.presentme.app.Styles
 import com.ian.presentme.events.UpdateSongListEvent
 import com.ian.presentme.models.Slide
@@ -13,8 +14,6 @@ import javafx.scene.layout.FlowPane
 import javafx.scene.layout.VBox
 import tornadofx.*
 import java.io.File
-import java.io.FileInputStream
-import java.util.*
 
 class MainView : View("PresentMe") {
     override val root: BorderPane by fxml()
@@ -30,7 +29,7 @@ class MainView : View("PresentMe") {
     init {
         main_top_wrapper.add(MainMenuBar::class)
         main_top_wrapper.add(MainToolbar::class)
-        subscribe<UpdateSongListEvent>  {
+        subscribe<UpdateSongListEvent> {
             populateSongList()
         }
 
@@ -41,6 +40,19 @@ class MainView : View("PresentMe") {
 
         // Populate song list when first opening the app
         populateSongList()
+    }
+
+    /**
+     * On close request to set preferences
+     */
+    override fun onDock() {
+        currentWindow?.let { window ->
+            window.setOnCloseRequest {
+                PresentMeApp.setPreference(PresentMeApp.WINDOW_SIZE_WIDTH, window.width.toString())
+                PresentMeApp.setPreference(PresentMeApp.WINDOW_SIZE_HEIGHT, window.height.toString())
+
+            }
+        }
     }
 
     /**
@@ -72,7 +84,7 @@ class MainView : View("PresentMe") {
      */
     private fun populateSongList() {
         val songsList = mutableListOf<Song>()
-        val songsDirectory = File(getPreferences()["songs_dir"].toString())
+        val songsDirectory = File(getPreferences(PresentMeApp.SONGS_DIR_KEY))
         if (songsDirectory.exists()) {
             songsDirectory.listFiles()?.let {
                 it.forEach { file ->
@@ -85,16 +97,10 @@ class MainView : View("PresentMe") {
     }
 
     /**
-     * Read preferences.properties and returns the Properties object
+     * Populates slides in slide flow pane
+     *
+     * @param slidesList List of slides to show in flow pane
      */
-    private fun getPreferences(): Properties {
-        val prop = Properties()
-        val fileInputStream = FileInputStream(MyApp.PREFERENCES)
-        prop.load(fileInputStream)
-        fileInputStream.close()
-        return prop
-    }
-
     private fun populateSlidesView(slidesList: MutableList<Slide>)  {
         main_slides_flow_pane.clear()
         slidesList.forEach {
