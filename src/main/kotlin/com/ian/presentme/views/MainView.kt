@@ -33,11 +33,9 @@ class MainView : View("PresentMe") {
         subscribe<UpdateSongListEvent>  {
             populateSongList()
         }
-        main_songs_list_view.onUserSelect(1) {
-            it.slides?.let { slides ->
-                populateSlidesView(slides)
-            }
-        }
+
+        setSongListEventListeners()
+
         // Flow pane listen for window resize
         main_slides_flow_pane.prefWrapLengthProperty().bind(main_slides_scroll_wrapper.widthProperty())
 
@@ -45,6 +43,33 @@ class MainView : View("PresentMe") {
         populateSongList()
     }
 
+    /**
+     * Set song list event listeners
+     * Item selection change listener
+     * Double click listener
+     * Delete listener
+     */
+    private fun setSongListEventListeners() {
+        main_songs_list_view.selectionModel.selectedItemProperty().addListener(ChangeListener { observable, oldValue, newValue ->
+            newValue.slides?.let {
+                populateSlidesView(it)
+            }
+        })
+        // Double click
+        main_songs_list_view.onUserSelect(2) {
+            it.slides?.let { slides ->
+                println("ADD TO SET LIST $it")
+            }
+        }
+        // Hit delete / backspace
+        main_songs_list_view.onUserDelete {
+            println("DELETE SONG?")
+        }
+    }
+
+    /**
+     * Lists all files in songs_dir directory and deserializes json to song objects to be put into songs list
+     */
     private fun populateSongList() {
         val songsList = mutableListOf<Song>()
         val songsDirectory = File(getPreferences()["songs_dir"].toString())

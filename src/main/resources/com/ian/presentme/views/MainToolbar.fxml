@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--Toolbar on main view-->
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ToolBar?>
-<!--Toolbar on main view-->
 <ToolBar xmlns:fx="http://javafx.com/fxml">
     <Button fx:id="main_toolbar_start" text="Start Presentation" />
     <Button fx:id="main_toolbar_add_song" text="Add Song" />
