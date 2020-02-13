@@ -7,27 +7,23 @@
 <BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
 
     <top>
-        <VBox id="main_top_wrapper">
-            <!-- Menu bar on main view -->
-            <fx:include source="MainMenuBar.fxml"/>
-            <!--Toolbar on main view-->
-            <fx:include source="MainToolbar.fxml"/>
+        <VBox fx:id="main_top_wrapper">
         </VBox>
     </top>
 
     <left>
-        <SplitPane id="main_left_wrapper" dividerPositions="0.5" orientation="VERTICAL">
+        <SplitPane fx:id="main_left_wrapper" dividerPositions="0.5" orientation="VERTICAL">
             <!--List of all songs-->
             <VBox alignment="TOP_CENTER">
                 <Label styleClass="heading" text="Songs" />
-                <TextField id="main_songs_list_view_search_field" promptText="Search..." />
-                <ListView id="main_songs_list_view" />
+                <TextField fx:id="main_songs_list_view_search_field" promptText="Search..." />
+                <ListView fx:id="main_songs_list_view" />
             </VBox>
             <!--Currently active set list-->
             <VBox alignment="TOP_CENTER">
                 <Label styleClass="heading" text="Set List" />
-                <TextField id="main_set_list_view_search_field" promptText="Search..." />
-                <ListView id="main_set_list_view" />
+                <TextField fx:id="main_set_list_view_search_field" promptText="Search..." />
+                <ListView fx:id="main_set_list_view" />
             </VBox>
         </SplitPane>
     </left>
@@ -35,15 +31,15 @@
     <center>
         <SplitPane orientation="VERTICAL">
             <!--Slides of selected song or set-->
-            <FlowPane id="main_slides_flow_pane"/>
+            <FlowPane fx:id="main_slides_flow_pane"/>
             <!--Backgrounds list-->
-            <FlowPane id="main_background_flow_pane"/>
+            <FlowPane fx:id="main_background_flow_pane"/>
         </SplitPane>
     </center>
 
     <right>
         <!--Preview pane of presentation-->
-        <StackPane id="main_presentation_preview" alignment="TOP_RIGHT">
+        <StackPane fx:id="main_presentation_preview" alignment="TOP_RIGHT">
             <Text text="Preview"/>
         </StackPane>
     </right>

@@ -1,4 +1,4 @@
-package com.ian.presentme.app.models
+package com.ian.presentme.models
 
 class Slide {
     var content: String = ""

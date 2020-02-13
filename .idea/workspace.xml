@@ -2,9 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1beba19-492e-4df0-8bce-e71a862c743f" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/events/UpdateSongListEvent.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/CreateSongView.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/MainMenuBar.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/MainToolbar.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/CreateSongView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/app/MyApp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/app/MyApp.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/app/models/Slide.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/models/Slide.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/app/models/Song.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/models/Song.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/view/MainView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/MainView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/view/MainMenuBar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/MainMenuBar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/view/MainToolbar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/MainToolbar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/view/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/MainView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/MyApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/MyApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/models/Slide.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/models/Song.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/view/MainMenuBar.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/view/MainToolbar.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/view/MainView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/view/MainView.fxml" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,8 +41,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Kotlin Class" />
+        <option value="Class" />
+        <option value="FxmlFile" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -70,6 +89,9 @@
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="no.tornado.app" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.ian.presentme" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/com/ian/presentme" />
       <recent name="$PROJECT_DIR$/src/main" />
@@ -89,7 +111,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="TornadoFX.PresentMe">
     <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
       <node-interpreter value="project" />
       <working-dir value="" />
@@ -194,6 +216,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainView" type="TORNADOFX_RUNCONFIGURATION" factoryName="TornadoFX Configuration Factory" temporary="true" run-type="View" live-views="false" live-stylesheets="false" dump-stylesheets="false">
+      <option name="MAIN_CLASS_NAME" value="tornadofx.App" />
+      <module name="PresentMe" />
+      <option name="VIEW_CLASS_NAME" value="com.ian.presentme.views.MainView" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PresentMe" type="TORNADOFX_RUNCONFIGURATION" factoryName="TornadoFX Configuration Factory" run-type="App" live-views="false" live-stylesheets="false" dump-stylesheets="false">
       <option name="MAIN_CLASS_NAME" value="com.ian.presentme.app.MyApp" />
       <module name="PresentMe" />
@@ -217,6 +247,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TornadoFX.MainView" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration>$USER_HOME$/.subversion</configuration>

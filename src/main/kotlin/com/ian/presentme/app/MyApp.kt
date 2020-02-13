@@ -1,6 +1,6 @@
 package com.ian.presentme.app
 
-import com.ian.presentme.view.MainView
+import com.ian.presentme.views.MainView
 import tornadofx.*
 import java.io.File
 import java.io.FileOutputStream
