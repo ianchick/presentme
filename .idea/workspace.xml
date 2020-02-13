@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1beba19-492e-4df0-8bce-e71a862c743f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/com_google_code_gson_gson_2_8_5.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PresentMe.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PresentMe.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/app/Styles.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/app/Styles.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/models/Slide.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/models/Slide.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/models/Song.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/models/Song.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/CreateSongView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/CreateSongView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/Styles$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/Styles$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/Styles$Companion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/Styles$Companion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/Styles.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ian/presentme/app/Styles.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/MainView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/MainView.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -105,7 +98,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TornadoFX.PresentMe">
+  <component name="RunManager" selected="TornadoFX.MainView (2)">
     <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
       <node-interpreter value="project" />
       <working-dir value="" />
@@ -210,6 +203,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainView (1)" type="TORNADOFX_RUNCONFIGURATION" factoryName="TornadoFX Configuration Factory" temporary="true" run-type="View" live-views="false" live-stylesheets="false" dump-stylesheets="false">
+      <option name="MAIN_CLASS_NAME" value="tornadofx.App" />
+      <module name="PresentMe" />
+      <option name="VIEW_CLASS_NAME" value="com.ian.presentme.views.MainView" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainView (2)" type="TORNADOFX_RUNCONFIGURATION" factoryName="TornadoFX Configuration Factory" temporary="true" run-type="View" live-views="false" live-stylesheets="false" dump-stylesheets="false">
+      <option name="MAIN_CLASS_NAME" value="tornadofx.App" />
+      <module name="PresentMe" />
+      <option name="VIEW_CLASS_NAME" value="com.ian.presentme.views.MainView" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainView" type="TORNADOFX_RUNCONFIGURATION" factoryName="TornadoFX Configuration Factory" temporary="true" run-type="View" live-views="false" live-stylesheets="false" dump-stylesheets="false">
       <option name="MAIN_CLASS_NAME" value="tornadofx.App" />
       <module name="PresentMe" />
@@ -243,6 +252,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TornadoFX.MainView (2)" />
+        <item itemvalue="TornadoFX.MainView (1)" />
         <item itemvalue="TornadoFX.MainView" />
       </list>
     </recent_temporary>
