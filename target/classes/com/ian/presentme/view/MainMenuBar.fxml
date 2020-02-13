@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- Menu bar on main view -->
 <?import javafx.scene.control.*?>
 <MenuBar id="main_menu">
     <Menu id="main_menu_file" text="File">

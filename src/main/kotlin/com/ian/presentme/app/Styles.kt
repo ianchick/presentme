@@ -1,21 +1,22 @@
 package com.ian.presentme.app
 
 import javafx.scene.text.FontWeight
-import tornadofx.Stylesheet
-import tornadofx.box
-import tornadofx.cssclass
-import tornadofx.px
+import tornadofx.*
 
 class Styles : Stylesheet() {
     companion object {
         val heading by cssclass()
+
+        // Colors
+        val labelTextColor = c("#999")
     }
 
     init {
         label and heading {
-            padding = box(10.px)
-            fontSize = 20.px
+            padding = box(5.px)
+            fontSize = 12.px
             fontWeight = FontWeight.BOLD
+            textFill = labelTextColor
         }
     }
 }

@@ -19,13 +19,13 @@
         <SplitPane id="main_left_wrapper" dividerPositions="0.5" orientation="VERTICAL">
             <!--List of all songs-->
             <VBox alignment="TOP_CENTER">
-                <Label text="Songs" />
+                <Label styleClass="heading" text="Songs" />
                 <TextField id="main_songs_list_view_search_field" promptText="Search..." />
                 <ListView id="main_songs_list_view" />
             </VBox>
             <!--Currently active set list-->
             <VBox alignment="TOP_CENTER">
-                <Label text="Set List" />
+                <Label styleClass="heading" text="Set List" />
                 <TextField id="main_set_list_view_search_field" promptText="Search..." />
                 <ListView id="main_set_list_view" />
             </VBox>
