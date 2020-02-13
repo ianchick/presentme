@@ -31,7 +31,9 @@
     <center>
         <SplitPane orientation="VERTICAL">
             <!--Slides of selected song or set-->
-            <FlowPane fx:id="main_slides_flow_pane"/>
+            <ScrollPane fx:id="main_slides_scroll_wrapper">
+                <FlowPane fx:id="main_slides_flow_pane" styleClass="flowpane"/>
+            </ScrollPane>
             <!--Backgrounds list-->
             <FlowPane fx:id="main_background_flow_pane"/>
         </SplitPane>

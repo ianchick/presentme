@@ -2,10 +2,14 @@ package com.ian.presentme.views
 
 import com.google.gson.Gson
 import com.ian.presentme.app.MyApp
+import com.ian.presentme.app.Styles
 import com.ian.presentme.events.UpdateSongListEvent
+import com.ian.presentme.models.Slide
 import com.ian.presentme.models.Song
 import javafx.scene.control.ListView
+import javafx.scene.control.ScrollPane
 import javafx.scene.layout.BorderPane
+import javafx.scene.layout.FlowPane
 import javafx.scene.layout.VBox
 import tornadofx.*
 import java.io.File
@@ -16,14 +20,26 @@ class MainView : View("PresentMe") {
     override val root: BorderPane by fxml()
     private val main_top_wrapper: VBox by fxid()
     private val main_songs_list_view: ListView<Song> by fxid()
+    private val main_slides_flow_pane: FlowPane by fxid()
+    private val main_slides_scroll_wrapper: ScrollPane by fxid()
 
+    /**
+     * Initialize toolbars
+     * Populate songs list on first open
+     */
     init {
         main_top_wrapper.add(MainMenuBar::class)
         main_top_wrapper.add(MainToolbar::class)
-
         subscribe<UpdateSongListEvent>  {
             populateSongList()
         }
+        main_songs_list_view.onUserSelect(1) {
+            it.slides?.let { slides ->
+                populateSlidesView(slides)
+            }
+        }
+        // Flow pane listen for window resize
+        main_slides_flow_pane.prefWrapLengthProperty().bind(main_slides_scroll_wrapper.widthProperty())
 
         // Populate song list when first opening the app
         populateSongList()
@@ -52,5 +68,16 @@ class MainView : View("PresentMe") {
         prop.load(fileInputStream)
         fileInputStream.close()
         return prop
+    }
+
+    private fun populateSlidesView(slidesList: MutableList<Slide>)  {
+        main_slides_flow_pane.clear()
+        slidesList.forEach {
+            val pane = SlidePane()
+            pane.root.addClass(Styles.slidePane)
+            pane.slide_content.addClass(Styles.slideContent)
+            pane.slide_content.text = it.content
+            main_slides_flow_pane.add(pane)
+        }
     }
 }

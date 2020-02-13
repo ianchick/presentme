@@ -1,6 +1,7 @@
 package com.ian.presentme.views
 
 import com.google.gson.GsonBuilder
+import com.ian.presentme.app.Styles
 import com.ian.presentme.events.UpdateSongListEvent
 import com.ian.presentme.models.Slide
 import com.ian.presentme.models.Song
@@ -33,8 +34,7 @@ class CreateSongView : View("Create New Song") {
         // Validation of required fields
         val title = create_song_title.text
         if (title.isNullOrEmpty()) {
-            create_song_title.styleClass.add("error")
-            reloadStylesheetsOnFocus()
+            create_song_title.addClass(Styles.error)
         } else {
             val lyrics = create_song_lyrics.text
             val splitLyricsByNewline = lyrics.split("\n\n")
