@@ -158,7 +158,7 @@ class MainView : View("PresentMe") {
                             }
                         }
                     }
-                    populateSongList()
+                    fire(UpdateSongListEvent(null))
                 }
             }
         }

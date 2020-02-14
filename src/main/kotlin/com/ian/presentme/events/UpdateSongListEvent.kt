@@ -6,4 +6,4 @@ import tornadofx.*
 /**
  * Send event to update the song list
  */
-class UpdateSongListEvent(val song: Song): FXEvent()
+class UpdateSongListEvent(val song: Song?): FXEvent()
