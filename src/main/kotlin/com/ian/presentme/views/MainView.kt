@@ -37,12 +37,22 @@ class MainView : View("PresentMe") {
      * Check for last active set and initialize active set listeners
      */
     init {
+        // Initialize Toolbars
         main_top_wrapper.add(MainMenuBar::class)
         main_top_wrapper.add(MainToolbar::class)
+        // Subscribe when adding to song list
         subscribe<UpdateSongListEvent> { event ->
             populateSongList()
             main_songs_list_view.selectionModel.select(event.song)
         }
+        subscribe<UpdateSetListEvent> { event ->
+            activeSet = event.setList
+            setPreference(PresentMeApp.ACTIVE_SET, event.setList.title)
+            main_set_list_view_label.text = event.setList.title
+            populateSetListSongsList(event.setList)
+            populateSlidesView(event.setList.slidesList)
+        }
+
         setSongListEventListeners()
 
         // Flow pane listen for window resize and focus traversable
@@ -63,13 +73,7 @@ class MainView : View("PresentMe") {
                 populateSetListSongsList(activeSet!!)
             }
         }
-        subscribe<UpdateSetListEvent> { event ->
-            activeSet = event.setList
-            setPreference(PresentMeApp.ACTIVE_SET, event.setList.title)
-            main_set_list_view_label.text = event.setList.title
-            populateSlidesView(event.setList.slidesList)
-            populateSetListSongsList(event.setList)
-        }
+
         main_set_list_create.action {
             CreateSetListView().openWindow()
         }
@@ -95,8 +99,8 @@ class MainView : View("PresentMe") {
                 val index = main_set_list_view.selectionModel.selectedIndexProperty().get()
                 it.songsList.removeAt(index)
                 it.setSlidesFromSongs()
-                populateSetListSongsList(it)
-                populateSlidesView(it.slidesList)
+                writeToSetListFile(it)
+                fire(UpdateSetListEvent(it))
             }
         }
     }
@@ -136,8 +140,7 @@ class MainView : View("PresentMe") {
                     set.slidesList.addAll(slides)
                     set.songsList.add(song)
                     writeToSetListFile(set)
-                    populateSlidesView(set.slidesList)
-                    populateSetListSongsList(set)
+                    fire(UpdateSetListEvent(set))
                 }
             }
         }
