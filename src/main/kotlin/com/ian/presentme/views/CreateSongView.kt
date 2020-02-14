@@ -3,7 +3,7 @@ package com.ian.presentme.views
 import com.google.gson.GsonBuilder
 import com.ian.presentme.app.PresentMeApp
 import com.ian.presentme.app.Styles
-import com.ian.presentme.events.UpdateSongListEvent
+import com.ian.presentme.events.AddSongToSongListEvent
 import com.ian.presentme.models.Slide
 import com.ian.presentme.models.Song
 import javafx.scene.control.Button
@@ -49,7 +49,7 @@ class CreateSongView : View("Create New Song") {
             val jsonString = gson.toJson(song)
             val file = File(PresentMeApp.getPreferences(PresentMeApp.SONGS_DIR_KEY)+ "/$title")
             file.writeText(jsonString)
-            fire(UpdateSongListEvent(song))
+            fire(AddSongToSongListEvent(song))
 
             close()
         }

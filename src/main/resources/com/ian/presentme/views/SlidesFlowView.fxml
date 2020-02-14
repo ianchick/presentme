@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Slides of selected song or set-->
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.FlowPane?>
+<ScrollPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:id="slides_scroll_wrapper">
+        <FlowPane fx:id="slides_flow_pane" styleClass="flowpane"/>
+</ScrollPane>
