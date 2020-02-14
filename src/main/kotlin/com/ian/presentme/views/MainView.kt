@@ -11,10 +11,7 @@ import com.ian.presentme.events.UpdateSongListEvent
 import com.ian.presentme.models.SetList
 import com.ian.presentme.models.Slide
 import com.ian.presentme.models.Song
-import javafx.scene.control.Button
-import javafx.scene.control.Label
-import javafx.scene.control.ListView
-import javafx.scene.control.ScrollPane
+import javafx.scene.control.*
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.FlowPane
 import javafx.scene.layout.VBox
@@ -125,7 +122,7 @@ class MainView : View("PresentMe") {
      */
     private fun setSongListEventListeners() {
         main_songs_list_view.selectionModel.selectedItemProperty().addListener(ChangeListener { observable, oldValue, newValue ->
-            newValue?.let {song ->
+            newValue?.let { song ->
                 song.slides?.let {
                     populateSlidesView(it)
                     main_set_list_view.selectionModel.select(null)
@@ -144,9 +141,23 @@ class MainView : View("PresentMe") {
                 }
             }
         }
-        // Hit delete / backspace
-        main_songs_list_view.onUserDelete {
-            println("DELETE SONG?")
+        // Hit delete / backspace to remove song
+        main_songs_list_view.onUserDelete { song ->
+            val delete = alert(Alert.AlertType.CONFIRMATION,
+                    "Are you sure you want to delete ${main_songs_list_view.selectionModel.selectedItem}?",
+                    "") { button ->
+                if (button == ButtonType.OK) {
+                    val songsDirectory = File(getPreferences(PresentMeApp.SONGS_DIR_KEY))
+                    songsDirectory.listFiles()?.let {
+                        it.forEach { file ->
+                            if (file.name == song.title) {
+                                file.delete()
+                            }
+                        }
+                    }
+                    populateSongList()
+                }
+            }
         }
     }
 

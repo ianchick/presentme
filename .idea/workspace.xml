@@ -4,7 +4,6 @@
     <list default="true" id="d1beba19-492e-4df0-8bce-e71a862c743f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/MainView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/MainView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/CreateSongView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/CreateSongView.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -227,6 +226,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainView (4)" type="TORNADOFX_RUNCONFIGURATION" factoryName="TornadoFX Configuration Factory" temporary="true" run-type="View" live-views="false" live-stylesheets="false" dump-stylesheets="false">
+      <option name="MAIN_CLASS_NAME" value="tornadofx.App" />
+      <module name="PresentMe" />
+      <option name="VIEW_CLASS_NAME" value="com.ian.presentme.views.MainView" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainView" type="TORNADOFX_RUNCONFIGURATION" factoryName="TornadoFX Configuration Factory" temporary="true" run-type="View" live-views="false" live-stylesheets="false" dump-stylesheets="false">
       <option name="MAIN_CLASS_NAME" value="tornadofx.App" />
       <module name="PresentMe" />
@@ -264,9 +271,11 @@
       <item itemvalue="TornadoFX.MainView (1)" />
       <item itemvalue="TornadoFX.MainView (2)" />
       <item itemvalue="TornadoFX.MainView (3)" />
+      <item itemvalue="TornadoFX.MainView (4)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="TornadoFX.MainView (4)" />
         <item itemvalue="TornadoFX.MainView (3)" />
         <item itemvalue="TornadoFX.MainView (2)" />
         <item itemvalue="TornadoFX.MainView (1)" />
