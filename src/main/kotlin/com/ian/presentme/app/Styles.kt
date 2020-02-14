@@ -21,6 +21,7 @@ class Styles : Stylesheet() {
         // Generic Colors
         val labelTextColor = c("#999")
         val errorBorderColor = c("f00")
+        val selectedColor = c("00cc00")
         // Slide Colors
         val slideBgColor = c("#000")
         val slideTextColor = c("#fff")

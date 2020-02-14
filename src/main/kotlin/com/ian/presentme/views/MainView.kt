@@ -1,6 +1,7 @@
 package com.ian.presentme.views
 
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.ian.presentme.app.PresentMeApp
 import com.ian.presentme.app.PresentMeApp.Companion.getPreferences
 import com.ian.presentme.app.PresentMeApp.Companion.setPreference
@@ -28,6 +29,7 @@ class MainView : View("PresentMe") {
     private val main_slides_scroll_wrapper: ScrollPane by fxid()
     private val main_set_list_create: Button by fxid()
     private val main_set_list_view_label: Label by fxid()
+    private val main_set_list_view: ListView<Song> by fxid()
 
     // Currently active Set List
     private var activeSet: SetList? = null
@@ -35,6 +37,7 @@ class MainView : View("PresentMe") {
     /**
      * Initialize toolbars
      * Populate songs list on first open
+     * Check for last active set and initialize active set listeners
      */
     init {
         main_top_wrapper.add(MainMenuBar::class)
@@ -43,14 +46,15 @@ class MainView : View("PresentMe") {
             populateSongList()
             main_songs_list_view.selectionModel.select(event.song)
         }
-
         setSongListEventListeners()
 
-        // Flow pane listen for window resize
+        // Flow pane listen for window resize and focus traversable
         main_slides_flow_pane.prefWrapLengthProperty().bind(main_slides_scroll_wrapper.widthProperty())
+        main_slides_flow_pane.isFocusTraversable = true
 
         // Populate song list when first opening the app
         populateSongList()
+
         // Active set list set on open and when update event fires.
         val activeSetName = getPreferences(PresentMeApp.ACTIVE_SET)
         if (activeSetName.isNotEmpty()) {
@@ -58,16 +62,28 @@ class MainView : View("PresentMe") {
             if (setFile.exists()) {
                 activeSet = Gson().fromJson(setFile.readText(), SetList::class.java)
                 main_set_list_view_label.text = activeSetName
+                populateSlidesView(activeSet!!.slidesList)
+                populateSetListSongsList(activeSet!!)
             }
         }
         subscribe<UpdateSetListEvent> { event ->
             activeSet = event.setList
             setPreference(PresentMeApp.ACTIVE_SET, event.setList.title)
             main_set_list_view_label.text = event.setList.title
+            populateSlidesView(event.setList.slidesList)
+            populateSetListSongsList(event.setList)
         }
         main_set_list_create.action {
             CreateSetListView().openWindow()
         }
+
+        main_set_list_view.selectionModel.selectedItemProperty().addListener(ChangeListener { observable, oldValue, newValue ->
+            newValue?.let {song ->
+                activeSet?.let {
+                    populateSlidesView(it.slidesList)
+                }
+            }
+        })
     }
 
     /**
@@ -76,8 +92,8 @@ class MainView : View("PresentMe") {
     override fun onDock() {
         currentWindow?.let { window ->
             window.setOnCloseRequest {
-                PresentMeApp.setPreference(PresentMeApp.WINDOW_SIZE_WIDTH, window.width.toString())
-                PresentMeApp.setPreference(PresentMeApp.WINDOW_SIZE_HEIGHT, window.height.toString())
+                setPreference(PresentMeApp.WINDOW_SIZE_WIDTH, window.width.toString())
+                setPreference(PresentMeApp.WINDOW_SIZE_HEIGHT, window.height.toString())
 
             }
         }
@@ -98,15 +114,33 @@ class MainView : View("PresentMe") {
             }
         })
         // Double click
-        main_songs_list_view.onUserSelect(2) {
-            it.slides?.let { slides ->
-                println("ADD TO SET LIST $it")
+        main_songs_list_view.onUserSelect(2) { song ->
+            song.slides?.let { slides ->
+                activeSet?.let { set ->
+                    set.slidesList.addAll(slides)
+                    set.songsList.add(song)
+                    writeToSetListFile(set)
+                    populateSlidesView(set.slidesList)
+                    populateSetListSongsList(set)
+                }
             }
         }
         // Hit delete / backspace
         main_songs_list_view.onUserDelete {
             println("DELETE SONG?")
         }
+    }
+
+    /**
+     * Writes setlist to set file
+     *
+     * @param set Set object to write to file
+     */
+    private fun writeToSetListFile(set: SetList) {
+        val file = File(getPreferences(PresentMeApp.SETS_DIR_KEY)).resolve(set.title)
+        val gson = GsonBuilder().setPrettyPrinting().create()
+        val jsonString = gson.toJson(set)
+        file.writeText(jsonString)
     }
 
     /**
@@ -140,5 +174,14 @@ class MainView : View("PresentMe") {
             pane.slide_content.text = it.content
             main_slides_flow_pane.add(pane)
         }
+    }
+
+    /**
+     * Populate the set list with the list of songs
+     *
+     * @param setList Set list to populate set list list view
+     */
+    private fun populateSetListSongsList(setList: SetList) {
+        main_set_list_view.items = setList.songsList.observable()
     }
 }
