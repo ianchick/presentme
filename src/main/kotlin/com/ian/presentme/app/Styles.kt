@@ -17,7 +17,6 @@ class Styles : Stylesheet() {
         val slidePane by cssclass()
         val slideContent by cssclass()
         val flowpane by cssclass()
-        val presentationView by cssclass()
 
         // Generic Colors
         val labelTextColor = c("#999")
@@ -46,6 +45,7 @@ class Styles : Stylesheet() {
             alignment = Pos.CENTER
             prefHeight = 150.px
             prefWidth = prefHeight * SCREEN_RATIO
+            maxHeight = 200.px
         }
 
         slideContent {
@@ -56,10 +56,6 @@ class Styles : Stylesheet() {
         flowpane {
             hgap = 10.px
             vgap = 10.px
-        }
-
-        presentationView {
-            backgroundColor += slideBgColor
         }
     }
 }

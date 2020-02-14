@@ -21,7 +21,7 @@
 
     <right>
         <!--Preview pane of presentation-->
-        <SplitPane fx:id="main_presentation_preview_split_pane"/>
+        <SplitPane fx:id="main_right_split_pane" orientation="VERTICAL"/>
     </right>
 
 </BorderPane>

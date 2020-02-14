@@ -12,7 +12,7 @@ class MainView : View("PresentMe") {
     private val main_top_wrapper: VBox by fxid()
     private val main_left_wrapper:  SplitPane  by fxid()
     private val main_center_split_pane_wrapper: SplitPane by fxid()
-    private val main_presentation_preview_split_pane: SplitPane by fxid()
+    private val main_right_split_pane: SplitPane by fxid()
 
     /**
      * Initialize toolbars and children views.
@@ -26,7 +26,9 @@ class MainView : View("PresentMe") {
         main_left_wrapper.add(SetListListView::class)
         main_center_split_pane_wrapper.add(SlidesFlowView::class)
         main_center_split_pane_wrapper.add(BackgroundFlowView::class)
-        main_presentation_preview_split_pane.add(PresentationView::class)
+        main_right_split_pane.add(PresentationView::class)
+        // Placeholder
+        main_right_split_pane.add(VBox())
     }
 
     /**

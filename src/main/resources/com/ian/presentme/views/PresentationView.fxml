@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
+<?import javafx.scene.layout.StackPane?>
 <StackPane fx:id="presentation_view_stack_pane"
-           prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
-           xmlns:fx="http://javafx.com/fxml/1" styleClass="presentationView">
-    <Text fx:id="presentation_view_text" fill="#fff" text="Preview" textAlignment="CENTER"/>
+           xmlns="http://javafx.com/javafx/10.0.2-internal"
+           xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color:#FFF">
 </StackPane>
