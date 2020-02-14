@@ -43,9 +43,7 @@
 
     <right>
         <!--Preview pane of presentation-->
-        <StackPane fx:id="main_presentation_preview" alignment="TOP_RIGHT">
-            <Text text="Preview"/>
-        </StackPane>
+        <SplitPane fx:id="main_presentation_preview_split_pane"/>
     </right>
 
 </BorderPane>

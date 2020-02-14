@@ -27,6 +27,7 @@ class MainView : View("PresentMe") {
     private val main_set_list_create: Button by fxid()
     private val main_set_list_view_label: Label by fxid()
     private val main_set_list_view: ListView<Song> by fxid()
+    private val main_presentation_preview_split_pane: SplitPane by fxid()
 
     // Currently active Set List
     private var activeSet: SetList? = null
@@ -40,6 +41,8 @@ class MainView : View("PresentMe") {
         // Initialize Toolbars
         main_top_wrapper.add(MainMenuBar::class)
         main_top_wrapper.add(MainToolbar::class)
+        main_presentation_preview_split_pane.add(PresentationView::class)
+
         // Subscribe when adding to song list
         subscribe<UpdateSongListEvent> { event ->
             populateSongList()
@@ -52,8 +55,6 @@ class MainView : View("PresentMe") {
             populateSetListSongsList(event.setList)
             populateSlidesView(event.setList.slidesList)
         }
-
-        setSongListEventListeners()
 
         // Flow pane listen for window resize and focus traversable
         main_slides_flow_pane.prefWrapLengthProperty().bind(main_slides_scroll_wrapper.widthProperty())
@@ -73,11 +74,13 @@ class MainView : View("PresentMe") {
                 populateSetListSongsList(activeSet!!)
             }
         }
-
+        // Create new set list action
         main_set_list_create.action {
             CreateSetListView().openWindow()
         }
+
         setSetListClickListeners()
+        setSongListEventListeners()
     }
 
     /**
