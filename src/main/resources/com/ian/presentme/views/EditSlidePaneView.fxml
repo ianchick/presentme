@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      spacing="5">
+    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+
+    <TextArea fx:id="edit_slide_pane_text"/>
+    <HBox spacing="5">
+        <Button fx:id="edit_slide_pane_save" text="Save"/>
+        <Button fx:id="edit_slide_pane_cancel" text="Cancel"/>
+    </HBox>
+</VBox>

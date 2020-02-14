@@ -30,7 +30,7 @@ class SlidesFlowView : View() {
     private fun populateSlidesView(slidesList: MutableList<Slide>)  {
         slides_flow_pane.clear()
         slidesList.forEach {
-            val pane = SlidePane()
+            val pane = SlidePane(slides_flow_pane)
             pane.root.addClass(Styles.slidePane)
             pane.slide_content.addClass(Styles.slideContent)
             pane.slide_content.text = it.content
