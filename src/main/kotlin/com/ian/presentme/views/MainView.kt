@@ -76,14 +76,31 @@ class MainView : View("PresentMe") {
         main_set_list_create.action {
             CreateSetListView().openWindow()
         }
+        setSetListClickListeners()
+    }
 
+    /**
+     * Set List click listeners
+     * Double click to remove, select to show all slides in set
+     *
+     */
+    private fun setSetListClickListeners() {
         main_set_list_view.selectionModel.selectedItemProperty().addListener(ChangeListener { observable, oldValue, newValue ->
-            newValue?.let {song ->
+            newValue?.let { song ->
                 activeSet?.let {
                     populateSlidesView(it.slidesList)
+                    main_songs_list_view.selectionModel.select(null)
                 }
             }
         })
+        main_set_list_view.onUserSelect(2) { song ->
+            activeSet?.let {
+                it.songsList.remove(song)
+                it.setSlidesFromSongs()
+                populateSetListSongsList(it)
+                populateSlidesView(it.slidesList)
+            }
+        }
     }
 
     /**
@@ -110,6 +127,7 @@ class MainView : View("PresentMe") {
             newValue?.let {song ->
                 song.slides?.let {
                     populateSlidesView(it)
+                    main_set_list_view.selectionModel.select(null)
                 }
             }
         })
