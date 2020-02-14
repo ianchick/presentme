@@ -93,9 +93,10 @@ class MainView : View("PresentMe") {
                 }
             }
         })
-        main_set_list_view.onUserSelect(2) { song ->
+        main_set_list_view.onUserSelect(2) {
             activeSet?.let {
-                it.songsList.remove(song)
+                val index = main_set_list_view.selectionModel.selectedIndexProperty().get()
+                it.songsList.removeAt(index)
                 it.setSlidesFromSongs()
                 populateSetListSongsList(it)
                 populateSlidesView(it.slidesList)
