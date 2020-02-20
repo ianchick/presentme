@@ -8,8 +8,9 @@ import tornadofx.*
 
 class Styles : Stylesheet() {
     companion object {
-        val SCREEN_WIDTH = Screen.getPrimary().visualBounds.width
-        val SCREEN_HEIGHT = Screen.getPrimary().visualBounds.height
+        val screens = Screen.getScreens()
+        val SCREEN_WIDTH = screens[screens.size-1].visualBounds.width
+        val SCREEN_HEIGHT = screens[screens.size-1].visualBounds.height
         val SCREEN_RATIO = SCREEN_WIDTH / SCREEN_HEIGHT
 
         val heading by cssclass()
@@ -44,8 +45,9 @@ class Styles : Stylesheet() {
             padding = box(20.px)
             alignment = Pos.CENTER
             prefHeight = 150.px
-            prefWidth = prefHeight * SCREEN_RATIO
-            maxHeight = 200.px
+            maxHeight = 150.px
+            prefWidth = maxHeight * SCREEN_RATIO
+            maxWidth = maxHeight * SCREEN_RATIO
         }
 
         slideContent {

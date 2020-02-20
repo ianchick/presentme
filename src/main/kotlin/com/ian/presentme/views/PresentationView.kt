@@ -10,6 +10,7 @@ class PresentationView: View() {
 
     init {
         subscribe<UpdatePresentationView> { event ->
+            root.clear()
             val pane = SlidePane(event.slidePane.parent, event.slidePane.source)
             pane.root.addClass(Styles.slidePane)
             pane.slide_content.addClass(Styles.slideContent)

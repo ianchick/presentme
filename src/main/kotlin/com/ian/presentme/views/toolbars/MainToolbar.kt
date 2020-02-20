@@ -40,16 +40,15 @@ class MainToolbar: View() {
             liveView.close()
             main_toolbar_start.text = START
         } else { // Open
-            val stage = liveView.openWindow(stageStyle = StageStyle.UNDECORATED)
             if (Screen.getScreens().size > 1) {
                 val displayBounds = Screen.getScreens()[1].bounds
+                val stage = liveView.openWindow(stageStyle = StageStyle.UNDECORATED)
                 stage?.let {
                     it.x = displayBounds.minX
                     it.y = displayBounds.minY
                     it.width = displayBounds.width
                     it.height = displayBounds.height
                     it.isFullScreen = true
-                    it.isFocused = true
                 }
             } else {
                 liveView.openWindow()
