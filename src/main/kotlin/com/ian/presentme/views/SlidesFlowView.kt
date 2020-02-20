@@ -31,7 +31,6 @@ class SlidesFlowView : View() {
         slides_flow_pane.clear()
         val slides = source.slides
         slides.forEach { slide ->
-            println(slide)
             val pane = SlidePane(this, source)
             pane.root.addClass(Styles.slidePane)
             pane.slide_content.addClass(Styles.slideContent)

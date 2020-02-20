@@ -2,6 +2,7 @@ package com.ian.presentme.views
 
 import com.ian.presentme.app.PresentMeApp
 import com.ian.presentme.app.PresentMeApp.Companion.setPreference
+import com.ian.presentme.events.ToggleBackgroundViewEvent
 import com.ian.presentme.views.toolbars.MainMenuBar
 import com.ian.presentme.views.toolbars.MainToolbar
 import javafx.scene.control.SplitPane
@@ -31,6 +32,16 @@ class MainView : View("PresentMe") {
         main_right_split_pane.add(PresentationView::class)
         // Placeholder
         main_right_split_pane.add(VBox())
+
+        // Hide the second child of center pane (backgrounds view)
+        subscribe<ToggleBackgroundViewEvent> { event ->
+            if (event.toShow) {
+                main_center_split_pane_wrapper.add(BackgroundFlowView::class)
+            } else {
+                val backgroundFlowView = main_center_split_pane_wrapper.items[1]
+                main_center_split_pane_wrapper.items.remove(backgroundFlowView)
+            }
+        }
     }
 
     /**
