@@ -4,6 +4,8 @@ import com.ian.presentme.views.CreateSongView
 import com.ian.presentme.views.PresentationView
 import javafx.scene.control.Button
 import javafx.scene.control.ToolBar
+import javafx.stage.Screen
+import javafx.stage.StageStyle
 import tornadofx.*
 
 class MainToolbar: View() {
@@ -33,12 +35,25 @@ class MainToolbar: View() {
     }
 
     private fun toggleLiveView() {
-        if (isLive) {
+        if (isLive) { // Close
             isLive = false
             liveView.close()
             main_toolbar_start.text = START
-        } else {
-            liveView.openWindow()
+        } else { // Open
+            val stage = liveView.openWindow(stageStyle = StageStyle.UNDECORATED)
+            if (Screen.getScreens().size > 1) {
+                val displayBounds = Screen.getScreens()[1].bounds
+                stage?.let {
+                    it.x = displayBounds.minX
+                    it.y = displayBounds.minY
+                    it.width = displayBounds.width
+                    it.height = displayBounds.height
+                    it.isFullScreen = true
+                    it.isFocused = true
+                }
+            } else {
+                liveView.openWindow()
+            }
             liveView.currentStage?.isAlwaysOnTop = true
             isLive = true
             main_toolbar_start.text = STOP
