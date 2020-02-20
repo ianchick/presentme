@@ -41,10 +41,8 @@ class SongListView : View() {
     private fun setSongListEventListeners() {
         songlist_listview.selectionModel.selectedItemProperty().addListener(ChangeListener { observable, oldValue, newValue ->
             newValue?.let { song ->
-                song.slides?.let {
-                    fire(UpdateSlidesFlowViewEvent(it))
-                    fire(DeselectSetListItemEvent)
-                }
+                fire(UpdateSlidesFlowViewEvent(song))
+                fire(DeselectSetListItemEvent)
             }
         })
         // Double click to add song to set list
@@ -53,7 +51,7 @@ class SongListView : View() {
         }
         // Hit delete / backspace to delete song file
         songlist_listview.onUserDelete { song ->
-            val delete = alert(Alert.AlertType.CONFIRMATION,
+            alert(Alert.AlertType.CONFIRMATION,
                     "Are you sure you want to delete ${songlist_listview.selectionModel.selectedItem}?",
                     "") { button ->
                 if (button == ButtonType.OK) {

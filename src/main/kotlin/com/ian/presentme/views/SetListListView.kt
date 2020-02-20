@@ -47,9 +47,9 @@ class SetListListView: View() {
         // Adds given song to the active set if active set is not null, and updates set list
         subscribe<AddSongToActiveSetList> { event ->
             val song = event.song
-            song.slides?.let { slides ->
+            song.slides.let { slides ->
                 activeSet?.let { set ->
-                    set.slidesList.addAll(slides)
+                    set.slides.addAll(slides)
                     set.songsList.add(song)
                     fs.saveSetFile(set)
                     fire(UpdateSetListEvent(set))
@@ -85,9 +85,10 @@ class SetListListView: View() {
      */
     private fun setSetListEventListeners() {
         set_list_listview.selectionModel.selectedItemProperty().addListener(ChangeListener { observable, oldValue, newValue ->
-            newValue?.let { song ->
-                activeSet?.let {
-                    fire(UpdateSlidesFlowViewEvent(it.slidesList))
+            // Uncaught IndexOutOfBounds exception if this null check isn't here
+            newValue?.let {
+                activeSet?.let { set ->
+                    fire(UpdateSlidesFlowViewEvent(set))
                     fire(DeselectSongsListItemEvent)
                 }
             }
@@ -99,7 +100,7 @@ class SetListListView: View() {
                 it.setSlidesFromSongs()
                 fs.saveSetFile(it)
                 fire(UpdateSetListEvent(it))
-                fire(UpdateSlidesFlowViewEvent(it.slidesList))
+                fire(UpdateSlidesFlowViewEvent(it))
             }
         }
     }

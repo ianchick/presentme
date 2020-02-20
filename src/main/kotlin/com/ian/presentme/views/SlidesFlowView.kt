@@ -2,7 +2,7 @@ package com.ian.presentme.views
 
 import com.ian.presentme.app.Styles
 import com.ian.presentme.events.UpdateSlidesFlowViewEvent
-import com.ian.presentme.models.Slide
+import com.ian.presentme.models.SlideSource
 import javafx.scene.control.ScrollPane
 import javafx.scene.layout.FlowPane
 import tornadofx.*
@@ -18,22 +18,24 @@ class SlidesFlowView : View() {
         slides_flow_pane.isFocusTraversable = true
 
         subscribe<UpdateSlidesFlowViewEvent> { event ->
-            populateSlidesView(event.slides)
+            populateSlidesView(event.source)
         }
     }
 
     /**
      * Populates slides in slide flow pane
      *
-     * @param slidesList List of slides to show in flow pane
+     * @param source Source of slides
      */
-    private fun populateSlidesView(slidesList: MutableList<Slide>)  {
+    private fun populateSlidesView(source: SlideSource)  {
         slides_flow_pane.clear()
-        slidesList.forEach {
-            val pane = SlidePane(slides_flow_pane)
+        val slides = source.slides
+        slides.forEach { slide ->
+            println(slide)
+            val pane = SlidePane(source)
             pane.root.addClass(Styles.slidePane)
             pane.slide_content.addClass(Styles.slideContent)
-            pane.slide_content.text = it.content
+            pane.slide_content.text = slide.content
             slides_flow_pane.add(pane)
         }
     }
