@@ -1,7 +1,8 @@
 package com.ian.presentme.views
 
-import com.ian.presentme.app.PresentMeApp
-import com.ian.presentme.app.PresentMeApp.Companion.setPreference
+import com.ian.presentme.app.PreferenceController
+import com.ian.presentme.app.PreferenceController.Companion.WINDOW_SIZE_HEIGHT
+import com.ian.presentme.app.PreferenceController.Companion.WINDOW_SIZE_WIDTH
 import com.ian.presentme.events.ToggleBackgroundViewEvent
 import com.ian.presentme.views.toolbars.MainMenuBar
 import com.ian.presentme.views.toolbars.MainToolbar
@@ -16,6 +17,8 @@ class MainView : View("PresentMe") {
     private val main_left_wrapper:  SplitPane  by fxid()
     private val main_center_split_pane_wrapper: SplitPane by fxid()
     private val main_right_split_pane: SplitPane by fxid()
+
+    private val pc = PreferenceController()
 
     /**
      * Initialize toolbars and children views.
@@ -50,9 +53,8 @@ class MainView : View("PresentMe") {
     override fun onDock() {
         currentWindow?.let { window ->
             window.setOnCloseRequest {
-                setPreference(PresentMeApp.WINDOW_SIZE_WIDTH, window.width.toString())
-                setPreference(PresentMeApp.WINDOW_SIZE_HEIGHT, window.height.toString())
-
+                pc.setPreference(pc.getPreferences(WINDOW_SIZE_WIDTH), window.width.toString())
+                pc.setPreference(pc.getPreferences(WINDOW_SIZE_HEIGHT), window.height.toString())
             }
         }
     }

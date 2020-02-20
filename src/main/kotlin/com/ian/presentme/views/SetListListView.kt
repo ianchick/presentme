@@ -2,7 +2,9 @@ package com.ian.presentme.views
 
 import com.google.gson.Gson
 import com.ian.presentme.app.FileStorageController
-import com.ian.presentme.app.PresentMeApp
+import com.ian.presentme.app.PreferenceController
+import com.ian.presentme.app.PreferenceController.Companion.ACTIVE_SET
+import com.ian.presentme.app.PreferenceController.Companion.SETS_DIR_KEY
 import com.ian.presentme.events.*
 import com.ian.presentme.models.SetList
 import com.ian.presentme.models.Song
@@ -22,6 +24,7 @@ class SetListListView: View() {
     // Currently active Set List
     private var activeSet: SetList? = null
     private val fs = FileStorageController()
+    private val pc = PreferenceController()
 
     init {
         // Set set list event listeners
@@ -35,7 +38,7 @@ class SetListListView: View() {
         // Update the set list with the given list and set to active
         subscribe<UpdateSetListEvent> { event ->
             activeSet = event.setList
-            PresentMeApp.setPreference(PresentMeApp.ACTIVE_SET, event.setList.title)
+            pc.setPreference(ACTIVE_SET, event.setList.title)
             set_list_label.text = event.setList.title
             populateSetList(event.setList)
         }
@@ -57,10 +60,10 @@ class SetListListView: View() {
             }
         }
         // Set active set list upon app start from preferences if previously saved
-        val preferencesSavedSet = PresentMeApp.getPreferences(PresentMeApp.ACTIVE_SET)
+        val preferencesSavedSet = pc.getPreferences(ACTIVE_SET)
         if (preferencesSavedSet.isNotEmpty()) {
             // If file exists for set name saved in preferences then populate
-            val file = File(PresentMeApp.SETS_DIR_KEY).resolve(preferencesSavedSet)
+            val file = File(pc.getPreferences(SETS_DIR_KEY)).resolve(preferencesSavedSet)
             if (file.exists()) {
                 val set = Gson().fromJson(file.readText(), SetList::class.java)
                 activeSet = set
