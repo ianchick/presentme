@@ -1,7 +1,6 @@
 package com.ian.presentme.views
 
-import com.google.gson.GsonBuilder
-import com.ian.presentme.app.PresentMeApp
+import com.ian.presentme.app.FileStorageController
 import com.ian.presentme.app.Styles
 import com.ian.presentme.events.AddSongToSongListEvent
 import com.ian.presentme.models.Slide
@@ -11,7 +10,6 @@ import javafx.scene.control.TextArea
 import javafx.scene.control.TextField
 import javafx.scene.layout.VBox
 import tornadofx.*
-import java.io.File
 
 class CreateSongView : View("Create New Song") {
     override val root: VBox by fxml()
@@ -45,12 +43,9 @@ class CreateSongView : View("Create New Song") {
             // Create song, serialize, write to file
             val song = Song(title)
             song.slides = songSlidesList
-            val gson = GsonBuilder().setPrettyPrinting().create()
-            val jsonString = gson.toJson(song)
-            val file = File(PresentMeApp.getPreferences(PresentMeApp.SONGS_DIR_KEY)+ "/$title")
-            file.writeText(jsonString)
+            val fs = FileStorageController()
+            fs.saveSongFile(song)
             fire(AddSongToSongListEvent(song))
-
             close()
         }
     }

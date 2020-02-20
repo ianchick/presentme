@@ -1,14 +1,12 @@
 package com.ian.presentme.views
 
-import com.google.gson.GsonBuilder
-import com.ian.presentme.app.PresentMeApp
+import com.ian.presentme.app.FileStorageController
 import com.ian.presentme.events.UpdateSetListEvent
 import com.ian.presentme.models.SetList
 import javafx.scene.control.Button
 import javafx.scene.control.TextField
 import javafx.scene.layout.VBox
 import tornadofx.*
-import java.io.File
 
 class CreateSetListView: View() {
     override val root: VBox by fxml()
@@ -20,10 +18,8 @@ class CreateSetListView: View() {
         create_set_view_save.action {
             val title = create_set_view_title.text
             val setList = SetList(title)
-            val file = File(PresentMeApp.getPreferences(PresentMeApp.SETS_DIR_KEY)).resolve(title)
-            val gson = GsonBuilder().setPrettyPrinting().create()
-            val jsonString = gson.toJson(setList)
-            file.writeText(jsonString)
+            val fs = FileStorageController()
+            fs.saveSetFile(setList)
             fire(UpdateSetListEvent(setList))
             close()
         }

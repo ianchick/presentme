@@ -1,7 +1,7 @@
 package com.ian.presentme.views
 
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
+import com.ian.presentme.app.FileStorageController
 import com.ian.presentme.app.PresentMeApp
 import com.ian.presentme.events.*
 import com.ian.presentme.models.SetList
@@ -21,6 +21,7 @@ class SetListListView: View() {
 
     // Currently active Set List
     private var activeSet: SetList? = null
+    private val fs = FileStorageController()
 
     init {
         // Set set list event listeners
@@ -50,7 +51,7 @@ class SetListListView: View() {
                 activeSet?.let { set ->
                     set.slidesList.addAll(slides)
                     set.songsList.add(song)
-                    writeToSetListFile(set)
+                    fs.saveSetFile(set)
                     fire(UpdateSetListEvent(set))
                 }
             }
@@ -79,18 +80,6 @@ class SetListListView: View() {
     }
 
     /**
-     * Writes setlist to local storage file
-     *
-     * @param set Set object to write to file
-     */
-    private fun writeToSetListFile(set: SetList) {
-        val file = File(PresentMeApp.getPreferences(PresentMeApp.SETS_DIR_KEY)).resolve(set.title)
-        val gson = GsonBuilder().setPrettyPrinting().create()
-        val jsonString = gson.toJson(set)
-        file.writeText(jsonString)
-    }
-
-    /**
      * Set list even listeners
      * Double click to remove, select to show all slides in set
      */
@@ -108,7 +97,7 @@ class SetListListView: View() {
                 val index = set_list_listview.selectionModel.selectedIndexProperty().get()
                 it.songsList.removeAt(index)
                 it.setSlidesFromSongs()
-                writeToSetListFile(it)
+                fs.saveSetFile(it)
                 fire(UpdateSetListEvent(it))
                 fire(UpdateSlidesFlowViewEvent(it.slidesList))
             }
