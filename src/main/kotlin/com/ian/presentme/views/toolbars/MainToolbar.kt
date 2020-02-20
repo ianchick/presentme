@@ -1,8 +1,10 @@
 package com.ian.presentme.views.toolbars
 
+import com.ian.presentme.events.ChangeFontSizeEvent
 import com.ian.presentme.views.CreateSongView
 import com.ian.presentme.views.PresentationView
 import javafx.scene.control.Button
+import javafx.scene.control.ComboBox
 import javafx.scene.control.ToolBar
 import javafx.stage.Screen
 import javafx.stage.StageStyle
@@ -17,6 +19,7 @@ class MainToolbar: View() {
     override val root: ToolBar by fxml()
     private val main_toolbar_add_song: Button by fxid()
     private val main_toolbar_start: Button by fxid()
+    private val main_toolbar_font_size: ComboBox<Int> by fxid()
 
     private var isLive = false
     private var liveView = PresentationView()
@@ -25,6 +28,11 @@ class MainToolbar: View() {
         main_toolbar_add_song.action { openCreateSongView() }
         main_toolbar_start.action { toggleLiveView() }
         main_toolbar_start.text = START
+        populateFontSizeComboBox()
+
+        main_toolbar_font_size.valueProperty().onChange {
+            fire(ChangeFontSizeEvent(it!!))
+        }
     }
 
     /**
@@ -57,5 +65,10 @@ class MainToolbar: View() {
             isLive = true
             main_toolbar_start.text = STOP
         }
+    }
+
+    private fun populateFontSizeComboBox() {
+        val fontSizes = observableList(12, 14, 18, 24, 30, 36, 48, 60, 72, 84)
+        main_toolbar_font_size.items = fontSizes
     }
 }
