@@ -9,7 +9,7 @@ import tornadofx.*
 
 class SlidesFlowView : View() {
     override val root: ScrollPane by fxml()
-    private val slides_flow_pane: FlowPane by fxid()
+    val slides_flow_pane: FlowPane by fxid()
     private val slides_scroll_wrapper: ScrollPane by fxid()
 
     init {
@@ -32,7 +32,7 @@ class SlidesFlowView : View() {
         val slides = source.slides
         slides.forEach { slide ->
             println(slide)
-            val pane = SlidePane(source)
+            val pane = SlidePane(this, source)
             pane.root.addClass(Styles.slidePane)
             pane.slide_content.addClass(Styles.slideContent)
             pane.slide_content.text = slide.content

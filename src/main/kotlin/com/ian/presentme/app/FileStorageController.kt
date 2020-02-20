@@ -2,11 +2,25 @@ package com.ian.presentme.app
 
 import com.google.gson.GsonBuilder
 import com.ian.presentme.models.SetList
+import com.ian.presentme.models.SlideSource
 import com.ian.presentme.models.Song
 import java.io.File
 
 class FileStorageController {
     private val gson = GsonBuilder().setPrettyPrinting().create()
+
+    /**
+     * For editting slides, save updated file
+     *
+     * @param item
+     */
+    fun saveFile(item: SlideSource) {
+        if (item is Song) {
+            saveSongFile(item)
+        } else if (item is SetList) {
+            saveSetFile(item)
+        }
+    }
 
     fun getSongFiles(): List<Song> {
         val songsList = mutableListOf<Song>()
