@@ -61,6 +61,7 @@ class PreferenceController {
         defaultProperties[ACTIVE_SET] = ""
         defaultProperties[WINDOW_SIZE_WIDTH] = "800"
         defaultProperties[WINDOW_SIZE_HEIGHT] = "600"
+        defaultProperties[CENTER_SP_DIV_HEIGHT] = "0.5"
         defaultProperties.store(outputStream, null)
         outputStream.close()
     }

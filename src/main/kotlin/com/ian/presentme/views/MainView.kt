@@ -33,6 +33,7 @@ class MainView : View("PresentMe") {
         main_left_wrapper.add(SetListListView::class)
         main_center_split_pane_wrapper.add(SlidesFlowView::class)
         main_center_split_pane_wrapper.add(BackgroundFlowView::class)
+        main_center_split_pane_wrapper.setDividerPosition(0, pc.getPreferences(CENTER_SP_DIV_HEIGHT).toDouble())
         main_right_split_pane.add(PresentationView::class)
         // Placeholder
         main_right_split_pane.add(VBox())
@@ -58,6 +59,7 @@ class MainView : View("PresentMe") {
             window.setOnCloseRequest {
                 pc.setPreference(WINDOW_SIZE_WIDTH, window.width.toString())
                 pc.setPreference(WINDOW_SIZE_HEIGHT, window.height.toString())
+                pc.setPreference(CENTER_SP_DIV_HEIGHT, main_center_split_pane_wrapper.dividerPositions[0].toString())
             }
         }
     }
