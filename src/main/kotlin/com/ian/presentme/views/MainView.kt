@@ -2,6 +2,8 @@ package com.ian.presentme.views
 
 import com.ian.presentme.app.PresentMeApp
 import com.ian.presentme.app.PresentMeApp.Companion.setPreference
+import com.ian.presentme.views.toolbars.MainMenuBar
+import com.ian.presentme.views.toolbars.MainToolbar
 import javafx.scene.control.SplitPane
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.VBox

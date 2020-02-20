@@ -1,4 +1,4 @@
-package com.ian.presentme.views
+package com.ian.presentme.views.toolbars
 
 import javafx.scene.control.MenuBar
 import tornadofx.*

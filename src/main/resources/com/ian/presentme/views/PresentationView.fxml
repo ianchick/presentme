@@ -3,5 +3,5 @@
 <?import javafx.scene.layout.StackPane?>
 <StackPane fx:id="presentation_view_stack_pane"
            xmlns="http://javafx.com/javafx/10.0.2-internal"
-           xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color:#FFF">
+           xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color:#000">
 </StackPane>

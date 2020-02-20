@@ -4,6 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ToolBar?>
 <ToolBar xmlns:fx="http://javafx.com/fxml">
-    <Button fx:id="main_toolbar_start" text="Start Presentation" />
+    <Button fx:id="main_toolbar_start" />
     <Button fx:id="main_toolbar_add_song" text="Add Song" />
 </ToolBar>
