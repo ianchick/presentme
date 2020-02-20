@@ -12,6 +12,7 @@ import javafx.scene.control.Button
 import javafx.scene.control.Label
 import javafx.scene.control.ListView
 import javafx.scene.layout.VBox
+import javafx.stage.Modality
 import tornadofx.*
 import java.io.File
 
@@ -32,7 +33,7 @@ class SetListListView: View() {
 
         // Create new set list action
         set_list_create_button.action {
-            CreateSetListView().openWindow()
+            CreateSetListView().openWindow(modality = Modality.APPLICATION_MODAL)
         }
 
         // Update the set list with the given list and set to active

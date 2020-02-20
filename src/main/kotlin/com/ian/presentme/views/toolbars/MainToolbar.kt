@@ -39,6 +39,7 @@ class MainToolbar: View() {
             main_toolbar_start.text = START
         } else {
             liveView.openWindow()
+            liveView.currentStage?.isAlwaysOnTop = true
             isLive = true
             main_toolbar_start.text = STOP
         }
