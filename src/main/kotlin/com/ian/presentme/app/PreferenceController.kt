@@ -15,6 +15,7 @@ class PreferenceController {
         const val WINDOW_SIZE_WIDTH = "windowSizeWidth"
         const val WINDOW_SIZE_HEIGHT = "windowSizeHeight"
         const val CENTER_SP_DIV_HEIGHT = "centerSplitPaneDivHeight"
+        const val FONT_SIZE = "fontSize"
     }
 
     /**
@@ -62,6 +63,7 @@ class PreferenceController {
         defaultProperties[WINDOW_SIZE_WIDTH] = "800"
         defaultProperties[WINDOW_SIZE_HEIGHT] = "600"
         defaultProperties[CENTER_SP_DIV_HEIGHT] = "0.5"
+        defaultProperties[FONT_SIZE] = "12.0"
         defaultProperties.store(outputStream, null)
         outputStream.close()
     }
