@@ -1,6 +1,7 @@
 package com.ian.presentme.views
 
 import com.ian.presentme.app.PreferenceController
+import com.ian.presentme.app.PreferenceController.Companion.CENTER_SP_DIV_HEIGHT
 import com.ian.presentme.app.PreferenceController.Companion.WINDOW_SIZE_HEIGHT
 import com.ian.presentme.app.PreferenceController.Companion.WINDOW_SIZE_WIDTH
 import com.ian.presentme.events.ToggleBackgroundViewEvent
@@ -40,7 +41,9 @@ class MainView : View("PresentMe") {
         subscribe<ToggleBackgroundViewEvent> { event ->
             if (event.toShow) {
                 main_center_split_pane_wrapper.add(BackgroundFlowView::class)
+                main_center_split_pane_wrapper.setDividerPosition(0, pc.getPreferences(CENTER_SP_DIV_HEIGHT).toDouble())
             } else {
+                pc.setPreference(CENTER_SP_DIV_HEIGHT, main_center_split_pane_wrapper.dividerPositions[0].toString())
                 val backgroundFlowView = main_center_split_pane_wrapper.items[1]
                 main_center_split_pane_wrapper.items.remove(backgroundFlowView)
             }
@@ -53,8 +56,8 @@ class MainView : View("PresentMe") {
     override fun onDock() {
         currentWindow?.let { window ->
             window.setOnCloseRequest {
-                pc.setPreference(pc.getPreferences(WINDOW_SIZE_WIDTH), window.width.toString())
-                pc.setPreference(pc.getPreferences(WINDOW_SIZE_HEIGHT), window.height.toString())
+                pc.setPreference(WINDOW_SIZE_WIDTH, window.width.toString())
+                pc.setPreference(WINDOW_SIZE_HEIGHT, window.height.toString())
             }
         }
     }

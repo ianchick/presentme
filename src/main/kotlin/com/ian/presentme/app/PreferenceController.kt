@@ -14,6 +14,7 @@ class PreferenceController {
         const val ACTIVE_SET = "activeSet"
         const val WINDOW_SIZE_WIDTH = "windowSizeWidth"
         const val WINDOW_SIZE_HEIGHT = "windowSizeHeight"
+        const val CENTER_SP_DIV_HEIGHT = "centerSplitPaneDivHeight"
     }
 
     /**
