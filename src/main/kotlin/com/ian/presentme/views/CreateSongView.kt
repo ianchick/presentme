@@ -2,6 +2,7 @@ package com.ian.presentme.views
 
 import com.ian.presentme.app.FileStorageController
 import com.ian.presentme.app.Styles
+import com.ian.presentme.app.UserSession
 import com.ian.presentme.app.Utilities
 import com.ian.presentme.events.AddSongToSongListEvent
 import com.ian.presentme.models.Slide
@@ -43,6 +44,7 @@ class CreateSongView : View("Create New Song") {
             }
             // Create song, serialize, write to file
             val song = Song(Utilities.generateSongId(), title)
+            UserSession.addSong(song)
             song.slides = songSlidesList
             val fs = FileStorageController()
             fs.saveSongFile(song)

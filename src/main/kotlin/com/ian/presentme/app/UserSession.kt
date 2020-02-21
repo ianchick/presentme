@@ -4,6 +4,7 @@ import com.ian.presentme.app.PreferenceController.Companion.SET_IDS
 import com.ian.presentme.app.PreferenceController.Companion.SONG_IDS
 import com.ian.presentme.models.SetList
 import com.ian.presentme.models.Song
+import java.util.regex.Pattern
 
 object UserSession {
     val songDB = mutableMapOf<Int, Song>()
@@ -23,11 +24,33 @@ object UserSession {
         setlists.forEach { set ->
             setlistDB[set.id] = set
         }
-        pc.getPreferences(SONG_IDS).split(",").forEach { idString ->
-            songIds.add(idString.toInt())
+        val digitsPattern = Pattern.compile("\\d+")
+        val songMatches = digitsPattern.matcher(pc.getPreferences(SONG_IDS))
+        while(songMatches.find()) {
+            songIds.add(songMatches.group().toInt())
         }
-        pc.getPreferences(SET_IDS).split(",").forEach { idString ->
-            setIds.add(idString.toInt())
+        val setMatches = digitsPattern.matcher(pc.getPreferences(SET_IDS))
+        while(setMatches.find()) {
+            setIds.add(setMatches.group().toInt())
+        }
+    }
+
+    fun addSet(setList: SetList) {
+        setlistDB[setList.id] = setList
+        setIds.add(setList.id)
+    }
+
+    fun addSong(song: Song) {
+        songDB[song.id] = song
+        songIds.add(song.id)
+    }
+
+    fun updateFiles() {
+        songDB.forEach {
+            fc.saveSongFile(it.value)
+        }
+        setlistDB.forEach {
+            fc.saveSetFile(it.value)
         }
     }
 }

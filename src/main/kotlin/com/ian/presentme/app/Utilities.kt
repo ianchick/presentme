@@ -1,6 +1,7 @@
 package com.ian.presentme.app
 
 import java.util.*
+import kotlin.math.abs
 
 object Utilities {
     private val random = Random()
@@ -8,7 +9,7 @@ object Utilities {
     fun generateSongId(): Int {
         var id = 0
         while (id in UserSession.songIds) {
-            id = random.nextInt()
+            id = abs(random.nextInt())
         }
         return id
     }
@@ -16,7 +17,7 @@ object Utilities {
     fun generateSetId(): Int {
         var id = 0
         while (id in UserSession.setIds) {
-            id = random.nextInt()
+            id = abs(random.nextInt())
         }
         return id
     }

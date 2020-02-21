@@ -2,8 +2,11 @@ package com.ian.presentme.views
 
 import com.ian.presentme.app.PreferenceController
 import com.ian.presentme.app.PreferenceController.Companion.CENTER_SP_DIV_HEIGHT
+import com.ian.presentme.app.PreferenceController.Companion.SET_IDS
+import com.ian.presentme.app.PreferenceController.Companion.SONG_IDS
 import com.ian.presentme.app.PreferenceController.Companion.WINDOW_SIZE_HEIGHT
 import com.ian.presentme.app.PreferenceController.Companion.WINDOW_SIZE_WIDTH
+import com.ian.presentme.app.UserSession
 import com.ian.presentme.events.ToggleBackgroundViewEvent
 import com.ian.presentme.views.toolbars.MainMenuBar
 import com.ian.presentme.views.toolbars.MainToolbar
@@ -60,6 +63,10 @@ class MainView : View("PresentMe") {
                 pc.setPreference(WINDOW_SIZE_WIDTH, window.width.toString())
                 pc.setPreference(WINDOW_SIZE_HEIGHT, window.height.toString())
                 pc.setPreference(CENTER_SP_DIV_HEIGHT, main_center_split_pane_wrapper.dividerPositions[0].toString())
+                pc.setPreference(SONG_IDS, UserSession.songIds.toString())
+                pc.setPreference(SET_IDS, UserSession.setIds.toString())
+
+                UserSession.updateFiles()
             }
         }
     }
