@@ -34,7 +34,7 @@ class MainView : View("PresentMe") {
         main_center_split_pane_wrapper.add(SlidesFlowView::class)
         main_center_split_pane_wrapper.add(BackgroundFlowView::class)
         main_center_split_pane_wrapper.setDividerPosition(0, pc.getPreferences(CENTER_SP_DIV_HEIGHT).toDouble())
-        main_right_split_pane.add(PresentationView::class)
+        main_right_split_pane.add(PreviewView::class)
         // Placeholder
         main_right_split_pane.add(VBox())
 
