@@ -5,10 +5,12 @@ import com.ian.presentme.app.FileStorageController
 import com.ian.presentme.app.PreferenceController
 import com.ian.presentme.app.PreferenceController.Companion.ACTIVE_SET
 import com.ian.presentme.app.PreferenceController.Companion.SETS_DIR_KEY
+import com.ian.presentme.app.UserSession
 import com.ian.presentme.events.*
 import com.ian.presentme.models.SetList
 import com.ian.presentme.models.Song
 import javafx.scene.control.Button
+import javafx.scene.control.ComboBox
 import javafx.scene.control.Label
 import javafx.scene.control.ListView
 import javafx.scene.layout.VBox
@@ -21,6 +23,9 @@ class SetListListView: View() {
     private val set_list_create_button: Button by fxid()
     private val set_list_listview: ListView<Song> by fxid()
     private val set_list_label: Label by fxid()
+    private val set_list_up: Button by fxid()
+    private val set_list_down: Button by fxid()
+    private val set_list_set_combo: ComboBox<SetList> by fxid()
 
     // Currently active Set List
     private var activeSet: SetList? = null
@@ -42,6 +47,7 @@ class SetListListView: View() {
             pc.setPreference(ACTIVE_SET, event.setList.title)
             set_list_label.text = event.setList.title
             populateSetList(event.setList)
+            refreshSetComboBox()
         }
 
         subscribe<DeselectSetListItemEvent> {
@@ -66,11 +72,28 @@ class SetListListView: View() {
             val file = File(pc.getPreferences(SETS_DIR_KEY)).resolve(preferencesSavedSet)
             if (file.exists()) {
                 val set = Gson().fromJson(file.readText(), SetList::class.java)
-                activeSet = set
-                set_list_label.text = set.title
-                populateSetList(set)
+                updateActiveSet(set)
             }
         }
+        refreshSetComboBox()
+        set_list_set_combo.selectionModel.select(activeSet)
+    }
+
+    private fun refreshSetComboBox() {
+        set_list_set_combo.items.clear()
+        set_list_set_combo.items.addAll(UserSession.setlistDB.values)
+        set_list_set_combo.selectionModel.select(activeSet)
+        set_list_set_combo.valueProperty().onChange {
+            it?.let {
+                updateActiveSet(it)
+            }
+        }
+    }
+
+    private fun updateActiveSet(set: SetList) {
+        activeSet = set
+        set_list_label.text = set.title
+        populateSetList(set)
     }
 
     /**

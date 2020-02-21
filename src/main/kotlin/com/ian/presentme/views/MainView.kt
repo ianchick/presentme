@@ -62,7 +62,9 @@ class MainView : View("PresentMe") {
             window.setOnCloseRequest {
                 pc.setPreference(WINDOW_SIZE_WIDTH, window.width.toString())
                 pc.setPreference(WINDOW_SIZE_HEIGHT, window.height.toString())
-                pc.setPreference(CENTER_SP_DIV_HEIGHT, main_center_split_pane_wrapper.dividerPositions[0].toString())
+                if (main_center_split_pane_wrapper.dividers.size > 0) {
+                    pc.setPreference(CENTER_SP_DIV_HEIGHT, main_center_split_pane_wrapper.dividerPositions[0].toString())
+                }
                 pc.setPreference(SONG_IDS, UserSession.songIds.toString())
                 pc.setPreference(SET_IDS, UserSession.setIds.toString())
 
