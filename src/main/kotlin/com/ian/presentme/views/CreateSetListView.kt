@@ -1,6 +1,7 @@
 package com.ian.presentme.views
 
 import com.ian.presentme.app.FileStorageController
+import com.ian.presentme.app.Utilities
 import com.ian.presentme.events.UpdateSetListEvent
 import com.ian.presentme.models.SetList
 import javafx.scene.control.Button
@@ -17,7 +18,7 @@ class CreateSetListView: View() {
     init {
         create_set_view_save.action {
             val title = create_set_view_title.text
-            val setList = SetList(title)
+            val setList = SetList(Utilities.generateSetId(), title)
             val fs = FileStorageController()
             fs.saveSetFile(setList)
             fire(UpdateSetListEvent(setList))

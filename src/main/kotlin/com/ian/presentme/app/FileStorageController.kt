@@ -20,9 +20,21 @@ class FileStorageController {
     fun saveFile(item: SlideSource) {
         if (item is Song) {
             saveSongFile(item)
-        } else if (item is SetList) {
-            saveSetFile(item)
         }
+    }
+
+    fun getSetlistFiles(): List<SetList> {
+        val setlists = mutableListOf<SetList>()
+        val setsDirectory = File(pc.getPreferences(SETS_DIR_KEY))
+        if (setsDirectory.exists()) {
+            setsDirectory.listFiles()?.let {
+                it.forEach { file ->
+                    val set = gson.fromJson(file.readText(), SetList::class.java)
+                    setlists.add(set)
+                }
+            }
+        }
+        return setlists
     }
 
     fun getSongFiles(): List<Song> {

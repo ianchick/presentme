@@ -23,7 +23,7 @@ class EditSlidePaneView(parent: SlidesFlowView, slidePane: SlidePane, source: Sl
             source.slides[index].content = edit_slide_pane_text.text
             fs.saveFile(source)
             close()
-            fire(UpdateSlidesFlowViewEvent(source))
+            fire(UpdateSlidesFlowViewEvent(listOf(source)))
         }
         edit_slide_pane_cancel.action {
             close()

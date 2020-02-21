@@ -16,6 +16,7 @@ class PresentMeApp: App(MainView::class, Styles::class) {
     init {
         pc.generatePreferenceProperties()
         generateDataFolders()
+        UserSession.initialize()
     }
 
     override fun start(stage: Stage) {

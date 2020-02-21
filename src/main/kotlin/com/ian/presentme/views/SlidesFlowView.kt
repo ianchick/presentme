@@ -27,15 +27,16 @@ class SlidesFlowView : View() {
      *
      * @param source Source of slides
      */
-    private fun populateSlidesView(source: SlideSource)  {
+    private fun populateSlidesView(source: List<SlideSource>)  {
         slides_flow_pane.clear()
-        val slides = source.slides
-        slides.forEach { slide ->
-            val pane = SlidePane(this, source)
-            pane.root.addClass(Styles.slidePane)
-            pane.slide_content.addClass(Styles.slideContent)
-            pane.slide_content.text = slide.content
-            slides_flow_pane.add(pane)
+        source.forEach {
+            it.slides.forEach { slide ->
+                val pane = SlidePane(this, it)
+                pane.root.addClass(Styles.slidePane)
+                pane.slide_content.addClass(Styles.slideContent)
+                pane.slide_content.text = slide.content
+                slides_flow_pane.add(pane)
+            }
         }
     }
 }

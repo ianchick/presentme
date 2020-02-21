@@ -41,7 +41,7 @@ class SongListView : View() {
     private fun setSongListEventListeners() {
         songlist_listview.selectionModel.selectedItemProperty().addListener(ChangeListener { observable, oldValue, newValue ->
             newValue?.let { song ->
-                fire(UpdateSlidesFlowViewEvent(song))
+                fire(UpdateSlidesFlowViewEvent(listOf(song)))
                 fire(DeselectSetListItemEvent)
             }
         })
