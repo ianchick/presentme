@@ -19,6 +19,8 @@ class PreferenceController {
         const val SONG_IDS = "songIds"
         const val SET_IDS =  "setIds"
         const val BACKGROUND_FLOW_SHOWN = "backgroundFlowShown"
+        const val MAIN_LEFT_SP_DIV_POS = "mainLeftSplitPaneDivPosition"
+        const val MAIN_RIGHT_SP_DIV_POS = "mainRightSplitPaneDivPosition"
     }
 
     /**

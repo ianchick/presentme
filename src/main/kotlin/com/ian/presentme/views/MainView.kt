@@ -3,6 +3,8 @@ package com.ian.presentme.views
 import com.ian.presentme.app.PreferenceController
 import com.ian.presentme.app.PreferenceController.Companion.BACKGROUND_FLOW_SHOWN
 import com.ian.presentme.app.PreferenceController.Companion.CENTER_SP_DIV_HEIGHT
+import com.ian.presentme.app.PreferenceController.Companion.MAIN_LEFT_SP_DIV_POS
+import com.ian.presentme.app.PreferenceController.Companion.MAIN_RIGHT_SP_DIV_POS
 import com.ian.presentme.app.PreferenceController.Companion.SET_IDS
 import com.ian.presentme.app.PreferenceController.Companion.SONG_IDS
 import com.ian.presentme.app.PreferenceController.Companion.WINDOW_SIZE_HEIGHT
@@ -19,6 +21,7 @@ import tornadofx.*
 class MainView : View("PresentMe") {
     override val root: BorderPane by fxml()
     private val main_top_wrapper: VBox by fxid()
+    private val main_split_pane: SplitPane by fxid()
     private val main_left_wrapper:  SplitPane  by fxid()
     private val main_center_split_pane_wrapper: SplitPane by fxid()
     private val main_right_split_pane: SplitPane by fxid()
@@ -31,6 +34,8 @@ class MainView : View("PresentMe") {
      */
     init {
         // Initialize children views
+        main_split_pane.setDividerPosition(0, pc.getPreferences(MAIN_LEFT_SP_DIV_POS).toDouble())
+        main_split_pane.setDividerPosition(1, pc.getPreferences(MAIN_RIGHT_SP_DIV_POS).toDouble())
         main_top_wrapper.add(MainMenuBar::class)
         main_top_wrapper.add(MainToolbar::class)
         main_left_wrapper.add(SongListView::class)
@@ -67,6 +72,12 @@ class MainView : View("PresentMe") {
                 pc.setPreference(WINDOW_SIZE_HEIGHT, window.height.toString())
                 if (main_center_split_pane_wrapper.dividers.size > 0) {
                     pc.setPreference(CENTER_SP_DIV_HEIGHT, main_center_split_pane_wrapper.dividerPositions[0].toString())
+                }
+                if (main_split_pane.dividers.size > 0) {
+                    pc.setPreference(MAIN_LEFT_SP_DIV_POS, main_split_pane.dividerPositions[0].toString())
+                    if (main_split_pane.dividerPositions.size == 2) {
+                        pc.setPreference(MAIN_RIGHT_SP_DIV_POS, main_split_pane.dividerPositions[1].toString())
+                    }
                 }
                 pc.setPreference(SONG_IDS, UserSession.songIds.toString())
                 pc.setPreference(SET_IDS, UserSession.setIds.toString())

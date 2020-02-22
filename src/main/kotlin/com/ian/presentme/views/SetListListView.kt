@@ -71,7 +71,6 @@ class SetListListView: View() {
                 updateActiveSet(set)
             }
         }
-
         refreshSetComboBox()
         set_list_set_combo.selectionModel.select(activeSet)
 
@@ -86,7 +85,6 @@ class SetListListView: View() {
     private fun moveDown() {
         val index = set_list_listview.selectionModel.selectedIndex
         if (index < set_list_listview.items.size - 1 && index != -1) {
-            println(index)
             activeSet?.let { set ->
                 set.songIds[index] = set.songIds[index + 1].also { set.songIds[index + 1] = set.songIds[index] }
                 populateSetList(set)

@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.ComboBox?>
-<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" alignment="TOP_CENTER" spacing="5">
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" spacing="5">
     <Label fx:id="set_list_label" styleClass="heading" text="No Active Set List" />
     <HBox spacing="5">
         <ComboBox fx:id="set_list_set_combo"/>
         <Button fx:id="set_list_create_button" text="New Set"/>
     </HBox>
     <HBox spacing="5">
-        <ListView fx:id="set_list_listview" />
+        <ListView fx:id="set_list_listview"/>
         <VBox spacing="5">
             <Button fx:id="set_list_up" text="↑"/>
             <Button fx:id="set_list_down" text="↓"/>

@@ -3,25 +3,22 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Text?>
 <BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
     <top>
         <VBox fx:id="main_top_wrapper"/>
     </top>
 
-    <left>
-        <SplitPane fx:id="main_left_wrapper" dividerPositions="0.5" orientation="VERTICAL">
-            <padding><Insets top="10" right="5" bottom="5" left="10"/></padding>
-        </SplitPane>
-    </left>
-
     <center>
-        <SplitPane fx:id="main_center_split_pane_wrapper" orientation="VERTICAL"/>
+        <SplitPane fx:id="main_split_pane">
+            <SplitPane fx:id="main_left_wrapper" dividerPositions="0.5" orientation="VERTICAL">
+                <padding><Insets top="10" right="5" bottom="5" left="10"/></padding>
+            </SplitPane>
+            <SplitPane fx:id="main_center_split_pane_wrapper" orientation="VERTICAL">
+                <padding><Insets top="10" right="5" bottom="5" left="10"/></padding>
+            </SplitPane>
+            <!--Preview pane of presentation-->
+            <SplitPane fx:id="main_right_split_pane" orientation="VERTICAL"/>
+        </SplitPane>
     </center>
-
-    <right>
-        <!--Preview pane of presentation-->
-        <SplitPane fx:id="main_right_split_pane" orientation="VERTICAL"/>
-    </right>
 
 </BorderPane>
