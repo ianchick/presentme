@@ -13,9 +13,7 @@
             <SplitPane fx:id="main_left_wrapper" dividerPositions="0.5" orientation="VERTICAL">
                 <padding><Insets top="10" right="5" bottom="5" left="10"/></padding>
             </SplitPane>
-            <SplitPane fx:id="main_center_split_pane_wrapper" orientation="VERTICAL">
-                <padding><Insets top="10" right="5" bottom="5" left="10"/></padding>
-            </SplitPane>
+            <SplitPane fx:id="main_center_split_pane_wrapper" orientation="VERTICAL"/>
             <!--Preview pane of presentation-->
             <SplitPane fx:id="main_right_split_pane" orientation="VERTICAL"/>
         </SplitPane>

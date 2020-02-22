@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.ComboBox?>
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" spacing="5">
-    <Label fx:id="set_list_label" styleClass="heading" text="No Active Set List" />
+    <Label fx:id="set_list_label" styleClass="heading" text="No Active Set List" alignment="CENTER" prefWidth="Infinity" />
     <HBox spacing="5">
         <ComboBox fx:id="set_list_set_combo"/>
         <Button fx:id="set_list_create_button" text="New Set"/>
