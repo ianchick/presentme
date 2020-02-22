@@ -24,14 +24,12 @@ class EditSlidePaneView(parent: SlidesFlowView, slidePane: SlidePane, source: So
             var songIndex = 0
             val flowPaneIndex = parent.slides_flow_pane.children.indexOf(slidePane.root)
             val songSlideSize = source.slides.size
-            println(songSlideSize)
             for (song in parent.songsSource) {
                 // If song is the same and the index is smaller than the song slide size, than we are on the right instance of song
                 if (song == source && flowPaneIndex - songIndex < songSlideSize) {
                     break
                 } else {
                     songIndex += song.slides.size
-                    println(songIndex)
                 }
             }
             // Gets the slide's index in the song by subtracting real index from starting index of the song

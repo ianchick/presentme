@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1beba19-492e-4df0-8bce-e71a862c743f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/app/FileStorageController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/app/FileStorageController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/events/UpdateSlidesFlowViewEvent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/events/UpdateSlidesFlowViewEvent.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/models/SetList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/models/SetList.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/models/SlideSource.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/models/Song.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/models/Song.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/EditSlidePaneView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/EditSlidePaneView.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/SetListListView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/SetListListView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/SlidePane.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/SlidePane.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/SlidesFlowView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/SlidesFlowView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/SongListView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/SongListView.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -421,11 +412,11 @@
       <screen x="0" y="23" width="1680" height="942" />
     </state>
     <state x="100" y="123" width="1480" height="742" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1680.942@0.23.1680.942" timestamp="1582329930556" />
-    <state x="499" y="246" width="683" height="496" key="find.popup" timestamp="1582332235384">
+    <state x="499" y="246" width="683" height="496" key="find.popup" timestamp="1582332935367">
       <screen x="0" y="23" width="1680" height="942" />
     </state>
     <state x="499" y="242" width="683" height="486" key="find.popup/0.23.1680.924@0.23.1680.924" timestamp="1581706122011" />
-    <state x="499" y="246" width="683" height="496" key="find.popup/0.23.1680.942@0.23.1680.942" timestamp="1582332235384" />
+    <state x="499" y="246" width="683" height="496" key="find.popup/0.23.1680.942@0.23.1680.942" timestamp="1582332935367" />
     <state x="505" y="229" width="670" height="690" key="search.everywhere.popup" timestamp="1582332046289">
       <screen x="0" y="23" width="1680" height="942" />
     </state>

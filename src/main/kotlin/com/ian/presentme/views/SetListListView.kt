@@ -59,7 +59,6 @@ class SetListListView: View() {
             val song = event.song
             song.slides.let {
                 activeSet?.let { set ->
-                    println(set.songIds)
                     set.songIds.add(song.id)
                     fs.saveSetFile(set)
                     fire(UpdateSetListEvent(set))
