@@ -46,9 +46,11 @@ class PresentationView: View() {
             if (root.children.isNotEmpty()) {
                 root.children[0]?.let {
                     it.getChildList()?.let { text ->
-                        (text[0] as Text).font = Font(event.fontSize.toDouble())
-                        pc.setPreference(FONT_SIZE, event.fontSize.toDouble().toString())
-                        pc.setPreference(FONT_SIZE, event.fontSize.toDouble().toString())
+                        if (text.isNotEmpty()) {
+                            (text[0] as Text).font = Font(event.fontSize.toDouble())
+                            pc.setPreference(FONT_SIZE, event.fontSize.toDouble().toString())
+                            pc.setPreference(FONT_SIZE, event.fontSize.toDouble().toString())
+                        }
                     }
                 }
             }
@@ -58,7 +60,6 @@ class PresentationView: View() {
     override fun onDock() {
         currentWindow?.let {
             it.setOnCloseRequest {
-                println("CLOSE")
                 fire(ClosePresentationViewEvent)
             }
         }

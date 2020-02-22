@@ -45,7 +45,9 @@ class PreviewView: View() {
             if (root.children.isNotEmpty()) {
                 root.children[0]?.let {
                     it.getChildList()?.let { text ->
-                        (text[0] as Text).font = Font(event.fontSize.toDouble() * RATIO)
+                        if (text.isNotEmpty()) {
+                            (text[0] as Text).font = Font(event.fontSize.toDouble() * RATIO)
+                        }
                     }
                 }
             }

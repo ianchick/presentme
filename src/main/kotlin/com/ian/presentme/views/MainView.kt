@@ -34,8 +34,10 @@ class MainView : View("PresentMe") {
      */
     init {
         // Initialize children views
-        main_split_pane.setDividerPosition(0, pc.getPreferences(MAIN_LEFT_SP_DIV_POS).toDouble())
-        main_split_pane.setDividerPosition(1, pc.getPreferences(MAIN_RIGHT_SP_DIV_POS).toDouble())
+        if (pc.getPreferences(MAIN_LEFT_SP_DIV_POS).isNotBlank()) {
+            main_split_pane.setDividerPosition(0, pc.getPreferences(MAIN_LEFT_SP_DIV_POS).toDouble())
+            main_split_pane.setDividerPosition(1, pc.getPreferences(MAIN_RIGHT_SP_DIV_POS).toDouble())
+        }
         main_top_wrapper.add(MainMenuBar::class)
         main_top_wrapper.add(MainToolbar::class)
         main_left_wrapper.add(SongListView::class)

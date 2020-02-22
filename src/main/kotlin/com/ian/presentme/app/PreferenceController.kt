@@ -34,6 +34,9 @@ class PreferenceController {
         val fileInputStream = FileInputStream(PREFERENCES)
         prop.load(fileInputStream)
         fileInputStream.close()
+        if (prop[key] == null) {
+            return ""
+        }
         return prop[key].toString()
     }
 
