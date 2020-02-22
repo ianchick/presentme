@@ -3,6 +3,7 @@ package com.ian.presentme.views.toolbars
 import com.ian.presentme.app.PreferenceController
 import com.ian.presentme.app.PreferenceController.Companion.FONT_SIZE
 import com.ian.presentme.events.ChangeFontSizeEvent
+import com.ian.presentme.events.ClosePresentationViewEvent
 import com.ian.presentme.views.CreateSongView
 import com.ian.presentme.views.PresentationView
 import javafx.scene.control.Button
@@ -36,6 +37,10 @@ class MainToolbar: View() {
         main_toolbar_font_size.valueProperty().onChange {
             pc.setPreference(FONT_SIZE, it.toString())
             fire(ChangeFontSizeEvent(it!!))
+        }
+
+        subscribe<ClosePresentationViewEvent> {
+            toggleLiveView()
         }
     }
 

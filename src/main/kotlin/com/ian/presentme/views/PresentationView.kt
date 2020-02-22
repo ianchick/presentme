@@ -4,6 +4,7 @@ import com.ian.presentme.app.PreferenceController
 import com.ian.presentme.app.PreferenceController.Companion.FONT_SIZE
 import com.ian.presentme.app.Styles
 import com.ian.presentme.events.ChangeFontSizeEvent
+import com.ian.presentme.events.ClosePresentationViewEvent
 import com.ian.presentme.events.UpdatePresentationView
 import javafx.scene.layout.StackPane
 import javafx.scene.text.Font
@@ -47,8 +48,18 @@ class PresentationView: View() {
                     it.getChildList()?.let { text ->
                         (text[0] as Text).font = Font(event.fontSize.toDouble())
                         pc.setPreference(FONT_SIZE, event.fontSize.toDouble().toString())
+                        pc.setPreference(FONT_SIZE, event.fontSize.toDouble().toString())
                     }
                 }
+            }
+        }
+    }
+
+    override fun onDock() {
+        currentWindow?.let {
+            it.setOnCloseRequest {
+                println("CLOSE")
+                fire(ClosePresentationViewEvent)
             }
         }
     }
