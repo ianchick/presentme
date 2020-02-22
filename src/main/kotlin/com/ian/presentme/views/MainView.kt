@@ -1,6 +1,7 @@
 package com.ian.presentme.views
 
 import com.ian.presentme.app.PreferenceController
+import com.ian.presentme.app.PreferenceController.Companion.BACKGROUND_FLOW_SHOWN
 import com.ian.presentme.app.PreferenceController.Companion.CENTER_SP_DIV_HEIGHT
 import com.ian.presentme.app.PreferenceController.Companion.SET_IDS
 import com.ian.presentme.app.PreferenceController.Companion.SONG_IDS
@@ -35,7 +36,9 @@ class MainView : View("PresentMe") {
         main_left_wrapper.add(SongListView::class)
         main_left_wrapper.add(SetListListView::class)
         main_center_split_pane_wrapper.add(SlidesFlowView::class)
-        main_center_split_pane_wrapper.add(BackgroundFlowView::class)
+        if (pc.getPreferences(BACKGROUND_FLOW_SHOWN).toBoolean()) {
+            main_center_split_pane_wrapper.add(BackgroundFlowView::class)
+        }
         main_center_split_pane_wrapper.setDividerPosition(0, pc.getPreferences(CENTER_SP_DIV_HEIGHT).toDouble())
         main_right_split_pane.add(PreviewView::class)
         // Placeholder

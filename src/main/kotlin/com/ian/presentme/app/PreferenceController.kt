@@ -18,6 +18,7 @@ class PreferenceController {
         const val FONT_SIZE = "fontSize"
         const val SONG_IDS = "songIds"
         const val SET_IDS =  "setIds"
+        const val BACKGROUND_FLOW_SHOWN = "backgroundFlowShown"
     }
 
     /**
@@ -68,6 +69,7 @@ class PreferenceController {
         defaultProperties[FONT_SIZE] = "12.0"
         defaultProperties[SET_IDS] =  "0"
         defaultProperties[SONG_IDS] = "0"
+        defaultProperties[BACKGROUND_FLOW_SHOWN] = "true"
         defaultProperties.store(outputStream, null)
         outputStream.close()
     }
