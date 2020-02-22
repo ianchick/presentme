@@ -35,12 +35,10 @@ class SetListListView: View() {
     init {
         // Set set list event listeners
         setSetListEventListeners()
-
         // Create new set list action
         set_list_create_button.action {
             CreateSetListView().openWindow(modality = Modality.APPLICATION_MODAL)
         }
-
         // Update the set list with the given list and set to active
         subscribe<UpdateSetListEvent> { event ->
             activeSet = event.setList
@@ -49,11 +47,9 @@ class SetListListView: View() {
             populateSetList(event.setList)
             refreshSetComboBox()
         }
-
         subscribe<DeselectSetListItemEvent> {
             set_list_listview.selectionModel.select(null)
         }
-
         // Adds given song to the active set if active set is not null, and updates set list
         subscribe<AddSongToActiveSetList> { event ->
             val song = event.song
@@ -65,7 +61,6 @@ class SetListListView: View() {
                 }
             }
         }
-
         // Set active set list upon app start from preferences if previously saved
         val preferencesSavedSet = pc.getPreferences(ACTIVE_SET)
         if (preferencesSavedSet.isNotEmpty()) {
@@ -79,6 +74,44 @@ class SetListListView: View() {
 
         refreshSetComboBox()
         set_list_set_combo.selectionModel.select(activeSet)
+
+        set_list_up.action {
+            moveUp()
+        }
+        set_list_down.action {
+            moveDown()
+        }
+    }
+
+    private fun moveDown() {
+        val index = set_list_listview.selectionModel.selectedIndex
+        if (index < set_list_listview.items.size - 1 && index != -1) {
+            println(index)
+            activeSet?.let { set ->
+                set.songIds[index] = set.songIds[index + 1].also { set.songIds[index + 1] = set.songIds[index] }
+                populateSetList(set)
+                val songs = mutableListOf<Song>()
+                set.songIds.forEach {
+                    songs.add(UserSession.songDB[it] as Song)
+                }
+                fire(UpdateSlidesFlowViewEvent(songs))
+            }
+        }
+    }
+
+    private fun moveUp() {
+        val index = set_list_listview.selectionModel.selectedIndex
+        if (index > 0) {
+            activeSet?.let { set ->
+                set.songIds[index] = set.songIds[index - 1].also { set.songIds[index - 1] = set.songIds[index] }
+                populateSetList(set)
+                val songs = mutableListOf<Song>()
+                set.songIds.forEach {
+                    songs.add(UserSession.songDB[it] as Song)
+                }
+                fire(UpdateSlidesFlowViewEvent(songs))
+            }
+        }
     }
 
     private fun refreshSetComboBox() {
