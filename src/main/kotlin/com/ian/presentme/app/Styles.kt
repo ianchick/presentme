@@ -1,6 +1,7 @@
 package com.ian.presentme.app
 
 import javafx.geometry.Pos
+import javafx.scene.paint.Color
 import javafx.scene.text.FontWeight
 import javafx.scene.text.TextAlignment
 import javafx.stage.Screen
@@ -16,6 +17,7 @@ class Styles : Stylesheet() {
         val heading by cssclass()
         val error by cssclass()
         val slidePane by cssclass()
+        val presentationPane by cssclass()
         val slideContent by cssclass()
         val flowpane by cssclass()
 
@@ -42,6 +44,16 @@ class Styles : Stylesheet() {
 
         slidePane {
             backgroundColor += slideBgColor
+            padding = box(20.px)
+            alignment = Pos.CENTER
+            prefHeight = 150.px
+            maxHeight = 150.px
+            prefWidth = maxHeight * SCREEN_RATIO
+            maxWidth = maxHeight * SCREEN_RATIO
+        }
+
+        presentationPane {
+            backgroundColor += Color.TRANSPARENT
             padding = box(20.px)
             alignment = Pos.CENTER
             prefHeight = 150.px
