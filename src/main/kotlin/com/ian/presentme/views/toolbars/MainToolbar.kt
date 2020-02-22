@@ -1,5 +1,7 @@
 package com.ian.presentme.views.toolbars
 
+import com.ian.presentme.app.PreferenceController
+import com.ian.presentme.app.PreferenceController.Companion.FONT_SIZE
 import com.ian.presentme.events.ChangeFontSizeEvent
 import com.ian.presentme.views.CreateSongView
 import com.ian.presentme.views.PresentationView
@@ -19,18 +21,20 @@ class MainToolbar: View() {
     override val root: ToolBar by fxml()
     private val main_toolbar_add_song: Button by fxid()
     private val main_toolbar_start: Button by fxid()
-    private val main_toolbar_font_size: ComboBox<Int> by fxid()
+    private val main_toolbar_font_size: ComboBox<String> by fxid()
 
     private var isLive = false
+    private val pc = PreferenceController()
     private var liveView = PresentationView()
 
     init {
         main_toolbar_add_song.action { openCreateSongView() }
         main_toolbar_start.action { toggleLiveView() }
         main_toolbar_start.text = START
-        populateFontSizeComboBox()
+        initFontComboBox()
 
         main_toolbar_font_size.valueProperty().onChange {
+            pc.setPreference(FONT_SIZE, it.toString())
             fire(ChangeFontSizeEvent(it!!))
         }
     }
@@ -67,8 +71,9 @@ class MainToolbar: View() {
         }
     }
 
-    private fun populateFontSizeComboBox() {
-        val fontSizes = observableList(12, 14, 18, 24, 30, 36, 48, 60, 72, 84)
+    private fun initFontComboBox() {
+        val fontSizes = observableList("14", "18", "24", "30", "36", "48", "60", "72", "96", "120")
         main_toolbar_font_size.items = fontSizes
+        main_toolbar_font_size.selectionModel.select(pc.getPreferences(FONT_SIZE))
     }
 }

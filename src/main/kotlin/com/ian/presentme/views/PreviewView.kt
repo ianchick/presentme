@@ -11,7 +11,7 @@ import tornadofx.*
 
 class PreviewView: View() {
     override val root: StackPane by fxml()
-    private val ratio = 0.5
+    private val ratio = 0.33
     private val pc = PreferenceController()
 
     init {

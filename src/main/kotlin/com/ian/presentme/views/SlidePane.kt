@@ -19,6 +19,5 @@ class SlidePane(val parent: SlidesFlowView, val source: Song): View() {
                 EditSlidePaneView(parent,this, source).openModal()
             }
         }
-
     }
 }
