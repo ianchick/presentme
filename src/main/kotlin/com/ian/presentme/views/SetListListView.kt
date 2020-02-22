@@ -59,12 +59,14 @@ class SetListListView: View() {
             val song = event.song
             song.slides.let {
                 activeSet?.let { set ->
-                    set.songsList.add(song)
+                    println(set.songIds)
+                    set.songIds.add(song.id)
                     fs.saveSetFile(set)
                     fire(UpdateSetListEvent(set))
                 }
             }
         }
+
         // Set active set list upon app start from preferences if previously saved
         val preferencesSavedSet = pc.getPreferences(ACTIVE_SET)
         if (preferencesSavedSet.isNotEmpty()) {
@@ -75,6 +77,7 @@ class SetListListView: View() {
                 updateActiveSet(set)
             }
         }
+
         refreshSetComboBox()
         set_list_set_combo.selectionModel.select(activeSet)
     }
@@ -85,6 +88,7 @@ class SetListListView: View() {
         set_list_set_combo.selectionModel.select(activeSet)
         set_list_set_combo.valueProperty().onChange {
             it?.let {
+                pc.setPreference(ACTIVE_SET, it.title)
                 updateActiveSet(it)
             }
         }
@@ -102,7 +106,10 @@ class SetListListView: View() {
      * @param setList List of songs to populate set list with
      */
     private fun populateSetList(setList: SetList) {
-        set_list_listview.items = setList.songsList.observable()
+        set_list_listview.items.clear()
+        setList.songIds.forEach {
+            set_list_listview.items.add(UserSession.songDB[it])
+        }
     }
 
     /**
@@ -113,8 +120,12 @@ class SetListListView: View() {
         set_list_listview.selectionModel.selectedItemProperty().addListener(ChangeListener { observable, oldValue, newValue ->
             // Uncaught IndexOutOfBounds exception if this null check isn't here
             newValue?.let {
+                val songs = mutableListOf<Song>()
                 activeSet?.let { set ->
-                    fire(UpdateSlidesFlowViewEvent(set.songsList))
+                    set.songIds.forEach {
+                        songs.add(UserSession.songDB[it] as Song)
+                    }
+                    fire(UpdateSlidesFlowViewEvent(songs))
                     fire(DeselectSongsListItemEvent)
                 }
             }
@@ -122,10 +133,14 @@ class SetListListView: View() {
         set_list_listview.onUserSelect(2) {
             activeSet?.let { set ->
                 val index = set_list_listview.selectionModel.selectedIndexProperty().get()
-                set.songsList.removeAt(index)
+                set.songIds.removeAt(index)
                 fs.saveSetFile(set)
                 fire(UpdateSetListEvent(set))
-                fire(UpdateSlidesFlowViewEvent(set.songsList))
+                val songs = mutableListOf<Song>()
+                set.songIds.forEach {
+                    songs.add(UserSession.songDB[it] as Song)
+                }
+                fire(UpdateSlidesFlowViewEvent(songs))
             }
         }
     }

@@ -1,6 +1,7 @@
 package com.ian.presentme.events
 
-import com.ian.presentme.models.SlideSource
+
+import com.ian.presentme.models.Song
 import tornadofx.*
 
-class UpdateSlidesFlowViewEvent(val source: List<SlideSource>) : FXEvent()
+class UpdateSlidesFlowViewEvent(val source: List<Song>) : FXEvent()

@@ -2,7 +2,7 @@ package com.ian.presentme.views
 
 import com.ian.presentme.app.Styles
 import com.ian.presentme.events.UpdateSlidesFlowViewEvent
-import com.ian.presentme.models.SlideSource
+import com.ian.presentme.models.Song
 import javafx.scene.control.ScrollPane
 import javafx.scene.layout.FlowPane
 import tornadofx.*
@@ -11,6 +11,7 @@ class SlidesFlowView : View() {
     override val root: ScrollPane by fxml()
     val slides_flow_pane: FlowPane by fxid()
     private val slides_scroll_wrapper: ScrollPane by fxid()
+    var songsSource: List<Song> = listOf()
 
     init {
         // Flow pane listen for window resize and focus traversable
@@ -27,7 +28,8 @@ class SlidesFlowView : View() {
      *
      * @param source Source of slides
      */
-    private fun populateSlidesView(source: List<SlideSource>)  {
+    private fun populateSlidesView(source: List<Song>)  {
+        songsSource = source
         slides_flow_pane.clear()
         source.forEach {
             it.slides.forEach { slide ->

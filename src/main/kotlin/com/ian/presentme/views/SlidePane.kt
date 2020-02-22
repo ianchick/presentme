@@ -1,13 +1,13 @@
 package com.ian.presentme.views
 
 import com.ian.presentme.events.UpdatePresentationView
-import com.ian.presentme.models.SlideSource
+import com.ian.presentme.models.Song
 import javafx.scene.input.MouseButton
 import javafx.scene.layout.StackPane
 import javafx.scene.text.Text
 import tornadofx.*
 
-class SlidePane(val parent: SlidesFlowView, val source: SlideSource): View() {
+class SlidePane(val parent: SlidesFlowView, val source: Song): View() {
     override val root: StackPane by fxml()
     val slide_content: Text by fxid()
 

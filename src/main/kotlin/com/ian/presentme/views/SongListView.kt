@@ -1,6 +1,7 @@
 package com.ian.presentme.views
 
 import com.ian.presentme.app.FileStorageController
+import com.ian.presentme.app.UserSession
 import com.ian.presentme.events.*
 import com.ian.presentme.models.Song
 import javafx.scene.control.Alert
@@ -24,12 +25,12 @@ class SongListView : View() {
         // Refresh song list from files and select new song
         // TODO: Assumption is that file of new song is already saved before event. Misleading
         subscribe<AddSongToSongListEvent> { event ->
-            populateSongListFromLocalFiles()
+            populateSongsList()
             songlist_listview.selectionModel.select(event.song)
         }
 
         // Populate Song List on app open
-        populateSongListFromLocalFiles()
+        populateSongsList()
     }
 
     /**
@@ -57,7 +58,7 @@ class SongListView : View() {
                 if (button == ButtonType.OK) {
                     val fs = FileStorageController()
                     fs.deleteSongFile(song)
-                    populateSongListFromLocalFiles()
+                    populateSongsList()
                     fire(DeselectSongsListItemEvent)
                 }
             }
@@ -67,8 +68,10 @@ class SongListView : View() {
     /**
      * Populates song list with sorted list of songs pulled from local files
      */
-    private fun populateSongListFromLocalFiles() {
-        val fs = FileStorageController()
-        songlist_listview.items = fs.getSongFiles().observable().sorted()
+    private fun populateSongsList() {
+        songlist_listview.items.clear()
+        UserSession.songDB.values.forEach {
+            songlist_listview.items.add(it)
+        }
     }
 }

@@ -4,24 +4,12 @@ import com.google.gson.GsonBuilder
 import com.ian.presentme.app.PreferenceController.Companion.SETS_DIR_KEY
 import com.ian.presentme.app.PreferenceController.Companion.SONGS_DIR_KEY
 import com.ian.presentme.models.SetList
-import com.ian.presentme.models.SlideSource
 import com.ian.presentme.models.Song
 import java.io.File
 
 class FileStorageController {
     private val gson = GsonBuilder().setPrettyPrinting().create()
     private val pc = PreferenceController()
-
-    /**
-     * For editting slides, save updated file
-     *
-     * @param item
-     */
-    fun saveFile(item: SlideSource) {
-        if (item is Song) {
-            saveSongFile(item)
-        }
-    }
 
     fun getSetlistFiles(): List<SetList> {
         val setlists = mutableListOf<SetList>()
