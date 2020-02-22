@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1beba19-492e-4df0-8bce-e71a862c743f" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/events/EditCurrentSongEvent.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/events/ToggleEditSongButtonEvent.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/EditSongView.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/EditSongView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/MainView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/SetListListView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/SetListListView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/SlidesFlowView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/SlidesFlowView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/SongListView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/SongListView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/SongListView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/SongListView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/toolbars/MainToolbar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ian/presentme/views/toolbars/MainToolbar.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/toolbars/MainToolbar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ian/presentme/views/toolbars/MainToolbar.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -358,41 +361,41 @@
       <screen x="0" y="23" width="1680" height="942" />
     </state>
     <state x="606" y="153" width="469" height="681" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.23.1680.942@0.23.1680.942" timestamp="1582231410465" />
-    <state x="168" y="107" key="DiffContextDialog" timestamp="1582329909633">
+    <state x="168" y="107" key="DiffContextDialog" timestamp="1582396938703">
       <screen x="0" y="23" width="1680" height="942" />
     </state>
-    <state x="168" y="107" key="DiffContextDialog/0.23.1680.942@0.23.1680.942" timestamp="1582329909633" />
-    <state width="1638" height="225" key="GridCell.Tab.0.bottom" timestamp="1582354998342">
+    <state x="168" y="107" key="DiffContextDialog/0.23.1680.942@0.23.1680.942" timestamp="1582396938703" />
+    <state width="1638" height="225" key="GridCell.Tab.0.bottom" timestamp="1582415506255">
       <screen x="0" y="23" width="1680" height="942" />
     </state>
     <state width="1638" height="220" key="GridCell.Tab.0.bottom/0.23.1680.924@0.23.1680.924" timestamp="1581718311621" />
     <state width="1638" height="225" key="GridCell.Tab.0.bottom/0.23.1680.942@0.0.1680.1050" timestamp="1582267898141" />
-    <state width="1638" height="225" key="GridCell.Tab.0.bottom/0.23.1680.942@0.23.1680.942" timestamp="1582354998342" />
+    <state width="1638" height="225" key="GridCell.Tab.0.bottom/0.23.1680.942@0.23.1680.942" timestamp="1582415506255" />
     <state width="1638" height="225" key="GridCell.Tab.0.bottom/1680.106.1048.811/0.23.1680.942@0.23.1680.942" timestamp="1582350138977" />
     <state width="1638" height="225" key="GridCell.Tab.0.bottom/1680.23.1048.811/0.23.1680.942@0.23.1680.942" timestamp="1582237823570" />
-    <state width="1638" height="225" key="GridCell.Tab.0.center" timestamp="1582354998341">
+    <state width="1638" height="225" key="GridCell.Tab.0.center" timestamp="1582415506254">
       <screen x="0" y="23" width="1680" height="942" />
     </state>
     <state width="1638" height="220" key="GridCell.Tab.0.center/0.23.1680.924@0.23.1680.924" timestamp="1581718311621" />
     <state width="1638" height="225" key="GridCell.Tab.0.center/0.23.1680.942@0.0.1680.1050" timestamp="1582267898137" />
-    <state width="1638" height="225" key="GridCell.Tab.0.center/0.23.1680.942@0.23.1680.942" timestamp="1582354998341" />
+    <state width="1638" height="225" key="GridCell.Tab.0.center/0.23.1680.942@0.23.1680.942" timestamp="1582415506254" />
     <state width="1638" height="225" key="GridCell.Tab.0.center/1680.106.1048.811/0.23.1680.942@0.23.1680.942" timestamp="1582350138976" />
     <state width="1638" height="225" key="GridCell.Tab.0.center/1680.23.1048.811/0.23.1680.942@0.23.1680.942" timestamp="1582237823569" />
-    <state width="1638" height="225" key="GridCell.Tab.0.left" timestamp="1582354998340">
+    <state width="1638" height="225" key="GridCell.Tab.0.left" timestamp="1582415506253">
       <screen x="0" y="23" width="1680" height="942" />
     </state>
     <state width="1638" height="225" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1582267898127" />
     <state width="1638" height="220" key="GridCell.Tab.0.left/0.23.1680.924@0.23.1680.924" timestamp="1581718311620" />
     <state width="1638" height="225" key="GridCell.Tab.0.left/0.23.1680.942@0.0.1680.1050" timestamp="1582238585955" />
-    <state width="1638" height="225" key="GridCell.Tab.0.left/0.23.1680.942@0.23.1680.942" timestamp="1582354998340" />
+    <state width="1638" height="225" key="GridCell.Tab.0.left/0.23.1680.942@0.23.1680.942" timestamp="1582415506253" />
     <state width="1638" height="225" key="GridCell.Tab.0.left/1680.106.1048.811/0.23.1680.942@0.23.1680.942" timestamp="1582350138975" />
     <state width="1638" height="225" key="GridCell.Tab.0.left/1680.23.1048.811/0.23.1680.942@0.23.1680.942" timestamp="1582237823568" />
-    <state width="1638" height="225" key="GridCell.Tab.0.right" timestamp="1582354998341">
+    <state width="1638" height="225" key="GridCell.Tab.0.right" timestamp="1582415506254">
       <screen x="0" y="23" width="1680" height="942" />
     </state>
     <state width="1638" height="220" key="GridCell.Tab.0.right/0.23.1680.924@0.23.1680.924" timestamp="1581718311621" />
     <state width="1638" height="225" key="GridCell.Tab.0.right/0.23.1680.942@0.0.1680.1050" timestamp="1582267898139" />
-    <state width="1638" height="225" key="GridCell.Tab.0.right/0.23.1680.942@0.23.1680.942" timestamp="1582354998341" />
+    <state width="1638" height="225" key="GridCell.Tab.0.right/0.23.1680.942@0.23.1680.942" timestamp="1582415506254" />
     <state width="1638" height="225" key="GridCell.Tab.0.right/1680.106.1048.811/0.23.1680.942@0.23.1680.942" timestamp="1582350138977" />
     <state width="1638" height="225" key="GridCell.Tab.0.right/1680.23.1048.811/0.23.1680.942@0.23.1680.942" timestamp="1582237823569" />
     <state width="1638" height="309" key="GridCell.Tab.1.bottom" timestamp="1582308820252">
@@ -411,24 +414,24 @@
       <screen x="0" y="23" width="1680" height="942" />
     </state>
     <state width="1638" height="309" key="GridCell.Tab.1.right/0.23.1680.942@0.23.1680.942" timestamp="1582308820251" />
-    <state x="633" y="223" key="RollbackChangesDialog" timestamp="1582351472207">
+    <state x="633" y="223" key="RollbackChangesDialog" timestamp="1582396939925">
       <screen x="0" y="23" width="1680" height="942" />
     </state>
-    <state x="633" y="223" key="RollbackChangesDialog/0.23.1680.942@0.23.1680.942" timestamp="1582351472207" />
+    <state x="633" y="223" key="RollbackChangesDialog/0.23.1680.942@0.23.1680.942" timestamp="1582396939925" />
     <state x="100" y="123" width="1480" height="742" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1582329930556">
       <screen x="0" y="23" width="1680" height="942" />
     </state>
     <state x="100" y="123" width="1480" height="742" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1680.942@0.23.1680.942" timestamp="1582329930556" />
-    <state x="499" y="246" width="683" height="496" key="find.popup" timestamp="1582354712125">
+    <state x="499" y="246" width="683" height="496" key="find.popup" timestamp="1582415279638">
       <screen x="0" y="23" width="1680" height="942" />
     </state>
     <state x="499" y="242" width="683" height="486" key="find.popup/0.23.1680.924@0.23.1680.924" timestamp="1581706122011" />
-    <state x="499" y="246" width="683" height="496" key="find.popup/0.23.1680.942@0.23.1680.942" timestamp="1582354712125" />
-    <state x="505" y="229" width="670" height="690" key="search.everywhere.popup" timestamp="1582354905532">
+    <state x="499" y="246" width="683" height="496" key="find.popup/0.23.1680.942@0.23.1680.942" timestamp="1582415279638" />
+    <state x="505" y="229" width="670" height="690" key="search.everywhere.popup" timestamp="1582415867552">
       <screen x="0" y="23" width="1680" height="942" />
     </state>
     <state x="505" y="225" width="670" height="676" key="search.everywhere.popup/0.23.1680.924@0.23.1680.924" timestamp="1581717584154" />
-    <state x="505" y="229" width="670" height="690" key="search.everywhere.popup/0.23.1680.942@0.23.1680.942" timestamp="1582354905532" />
+    <state x="505" y="229" width="670" height="690" key="search.everywhere.popup/0.23.1680.942@0.23.1680.942" timestamp="1582415867552" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

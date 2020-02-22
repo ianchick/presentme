@@ -7,4 +7,5 @@
     <Button fx:id="main_toolbar_add_song" text="Add Song" />
     <Label text="Font Size:"/>
     <ComboBox fx:id="main_toolbar_font_size" />
+    <Button fx:id="main_toolbar_edit_song" text="Edit Song" disable="true"/>
 </ToolBar>

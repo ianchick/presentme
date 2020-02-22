@@ -20,6 +20,7 @@ class SongListView : View() {
 
         subscribe<DeselectSongsListItemEvent> {
             songlist_listview.selectionModel.select(null)
+            fire(ToggleEditSongButtonEvent(true))
         }
 
         // Refresh song list from files and select new song
@@ -44,6 +45,7 @@ class SongListView : View() {
             newValue?.let { song ->
                 fire(UpdateSlidesFlowViewEvent(listOf(song)))
                 fire(DeselectSetListItemEvent)
+                fire(ToggleEditSongButtonEvent(false))
             }
         })
         // Double click to add song to set list
@@ -61,6 +63,13 @@ class SongListView : View() {
                     populateSongsList()
                     fire(DeselectSongsListItemEvent)
                 }
+            }
+        }
+
+        subscribe<EditCurrentSongEvent> {
+            val song = songlist_listview.selectedItem
+            if (song != null) {
+                EditSongView(song).openModal()
             }
         }
     }
