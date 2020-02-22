@@ -11,15 +11,18 @@ import javafx.scene.text.Text
 import javafx.util.Duration
 import tornadofx.*
 
-open class PresentationView: View() {
+class PresentationView: View() {
     companion object {
         private const val TRANSITION_SPEED = 1000.0
     }
-
     override val root: StackPane by fxml()
     val pc = PreferenceController()
 
     init {
+        root.children.addAll(StackPane(), StackPane())
+        root.children[0].opacity = 1.0
+        root.children[1].opacity = 0.0
+
         subscribe<UpdatePresentationView> { event ->
             val pane = SlidePane(event.slidePane.parent, event.slidePane.source)
             pane.root.addClass(Styles.presentationPane)
