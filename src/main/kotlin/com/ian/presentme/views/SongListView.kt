@@ -30,6 +30,10 @@ class SongListView : View() {
             songlist_listview.selectionModel.select(event.song)
         }
 
+        subscribe<UpdateSongListEvent> {
+            populateSongsList()
+        }
+
         // Populate Song List on app open
         populateSongsList()
     }

@@ -6,6 +6,7 @@
          xmlns:fx="http://javafx.com/fxml">
     <Menu fx:id="main_menu_file" text="File">
         <MenuItem fx:id="main_menu_file_refresh" text="Refresh" />
+        <MenuItem fx:id="main_menu_import_songs" text="Bulk Import Songs" />
         <MenuItem fx:id="main_menu_file_pref" text="Preferences" />
     </Menu>
     <Menu fx:id="main_menu_view" text="View">
