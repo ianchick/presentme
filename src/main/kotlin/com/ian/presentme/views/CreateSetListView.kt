@@ -1,6 +1,5 @@
 package com.ian.presentme.views
 
-import com.ian.presentme.app.FileStorageController
 import com.ian.presentme.app.UserSession
 import com.ian.presentme.app.Utilities
 import com.ian.presentme.events.UpdateSetListEvent
@@ -21,8 +20,6 @@ class CreateSetListView: View() {
             val title = create_set_view_title.text
             val setList = SetList(Utilities.generateSetId(), title)
             UserSession.addSet(setList)
-            val fs = FileStorageController()
-            fs.saveSetFile(setList)
             fire(UpdateSetListEvent(setList))
             close()
         }

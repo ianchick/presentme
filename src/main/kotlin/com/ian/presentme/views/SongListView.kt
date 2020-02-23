@@ -1,6 +1,5 @@
 package com.ian.presentme.views
 
-import com.ian.presentme.app.FileStorageController
 import com.ian.presentme.app.UserSession
 import com.ian.presentme.events.*
 import com.ian.presentme.models.Song
@@ -62,10 +61,21 @@ class SongListView : View() {
                     "Are you sure you want to delete ${songlist_listview.selectionModel.selectedItem}?",
                     "") { button ->
                 if (button == ButtonType.OK) {
-                    val fs = FileStorageController()
-                    fs.deleteSongFile(song)
+                    UserSession.setlistDB.values.forEach { set ->
+                        val list = mutableListOf<Int>()
+                        set.songIds.forEach {
+                            if (it == song.id) {
+                                list.add(set.id)
+                            }
+                        }
+                        list.forEach {id ->
+                            UserSession.setlistDB[id]?.songIds?.remove(song.id)
+                        }
+                    }
+                    UserSession.songDB.remove(song.id)
                     populateSongsList()
                     fire(DeselectSongsListItemEvent)
+                    fire(UpdateSetListEvent())
                 }
             }
         }

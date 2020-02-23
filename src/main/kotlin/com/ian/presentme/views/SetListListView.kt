@@ -1,7 +1,6 @@
 package com.ian.presentme.views
 
 import com.google.gson.Gson
-import com.ian.presentme.app.FileStorageController
 import com.ian.presentme.app.PreferenceController
 import com.ian.presentme.app.PreferenceController.Companion.ACTIVE_SET
 import com.ian.presentme.app.PreferenceController.Companion.SETS_DIR_KEY
@@ -29,7 +28,6 @@ class SetListListView: View() {
 
     // Currently active Set List
     private var activeSet: SetList? = null
-    private val fs = FileStorageController()
     private val pc = PreferenceController()
 
     init {
@@ -41,11 +39,15 @@ class SetListListView: View() {
         }
         // Update the set list with the given list and set to active
         subscribe<UpdateSetListEvent> { event ->
-            activeSet = event.setList
-            pc.setPreference(ACTIVE_SET, event.setList.title)
-            set_list_label.text = event.setList.title
-            populateSetList(event.setList)
+            event.setList?.let { set ->
+                activeSet = event.setList
+                pc.setPreference(ACTIVE_SET, set.title)
+                set_list_label.text = set.title
+            }
             refreshSetComboBox()
+            activeSet?.let {
+                populateSetList(it)
+            }
         }
         subscribe<DeselectSetListItemEvent> {
             set_list_listview.selectionModel.select(null)
@@ -56,7 +58,7 @@ class SetListListView: View() {
             song.slides.let {
                 activeSet?.let { set ->
                     set.songIds.add(song.id)
-                    fs.saveSetFile(set)
+                    UserSession.setlistDB[set.id] = set
                     fire(UpdateSetListEvent(set))
                 }
             }
@@ -105,6 +107,7 @@ class SetListListView: View() {
                 populateSetList(set)
                 val songs = mutableListOf<Song>()
                 set.songIds.forEach {
+                    print(it)
                     songs.add(UserSession.songDB[it] as Song)
                 }
                 fire(UpdateSlidesFlowViewEvent(songs))
@@ -138,7 +141,9 @@ class SetListListView: View() {
     private fun populateSetList(setList: SetList) {
         set_list_listview.items.clear()
         setList.songIds.forEach {
-            set_list_listview.items.add(UserSession.songDB[it])
+            if (UserSession.songDB[it] != null) {
+                set_list_listview.items.add(UserSession.songDB[it])
+            }
         }
     }
 
@@ -153,7 +158,10 @@ class SetListListView: View() {
                 val songs = mutableListOf<Song>()
                 activeSet?.let { set ->
                     set.songIds.forEach {
-                        songs.add(UserSession.songDB[it] as Song)
+                        val song = UserSession.songDB[it]
+                        if (song != null) {
+                            songs.add(song)
+                        }
                     }
                     fire(UpdateSlidesFlowViewEvent(songs))
                     fire(DeselectSongsListItemEvent)
@@ -164,7 +172,7 @@ class SetListListView: View() {
             activeSet?.let { set ->
                 val index = set_list_listview.selectionModel.selectedIndexProperty().get()
                 set.songIds.removeAt(index)
-                fs.saveSetFile(set)
+                UserSession.setlistDB[set.id] = set
                 fire(UpdateSetListEvent(set))
                 val songs = mutableListOf<Song>()
                 set.songIds.forEach {

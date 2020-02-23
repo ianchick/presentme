@@ -83,7 +83,6 @@ class MainView : View("PresentMe") {
                 }
                 pc.setPreference(SONG_IDS, UserSession.songIds.toString())
                 pc.setPreference(SET_IDS, UserSession.setIds.toString())
-
                 UserSession.updateFiles()
             }
         }
