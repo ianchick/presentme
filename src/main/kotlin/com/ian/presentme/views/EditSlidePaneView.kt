@@ -35,7 +35,7 @@ class EditSlidePaneView(parent: SlidesFlowView, slidePane: SlidePane, source: So
             // Gets the slide's index in the song by subtracting real index from starting index of the song
             val index = flowPaneIndex - songIndex
             source.slides[index].content = edit_slide_pane_text.text
-            UserSession.songDB[source.id] = source
+            UserSession.songDB.setSong(source.id, source)
             fs.saveSongFile(source)
             close()
             fire(UpdateSlidesFlowViewEvent(parent.songsSource))

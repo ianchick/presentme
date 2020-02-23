@@ -72,7 +72,7 @@ class SongListView : View() {
                             UserSession.setlistDB[id]?.songIds?.remove(song.id)
                         }
                     }
-                    UserSession.songDB.remove(song.id)
+                    UserSession.songDB.removeSong(song.id)
                     populateSongsList()
                     fire(DeselectSongsListItemEvent)
                     fire(UpdateSetListEvent())
@@ -93,7 +93,7 @@ class SongListView : View() {
      */
     private fun populateSongsList() {
         songlist_listview.items.clear()
-        UserSession.songDB.values.forEach {
+        UserSession.songDB.getValues().forEach {
             songlist_listview.items.add(it)
         }
     }

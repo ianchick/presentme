@@ -4,10 +4,11 @@ import com.ian.presentme.app.PreferenceController.Companion.SET_IDS
 import com.ian.presentme.app.PreferenceController.Companion.SONG_IDS
 import com.ian.presentme.models.SetList
 import com.ian.presentme.models.Song
+import com.ian.presentme.models.SongDatabase
 import java.util.regex.Pattern
 
 object UserSession {
-    val songDB = mutableMapOf<Int, Song>()
+    val songDB = SongDatabase()
     val setlistDB = mutableMapOf<Int, SetList>()
     val songIds = mutableListOf<Int>()
     val setIds = mutableListOf<Int>()
@@ -18,7 +19,7 @@ object UserSession {
     fun initialize() {
         val songs = fc.getSongFiles()
         songs.forEach { song ->
-            songDB[song.id] = song
+            songDB.addSong(song)
         }
         val setlists = fc.getSetlistFiles()
         setlists.forEach { set ->
@@ -41,13 +42,13 @@ object UserSession {
     }
 
     fun addSong(song: Song) {
-        songDB[song.id] = song
+        songDB.addSong(song)
         songIds.add(song.id)
     }
 
     fun updateFiles() {
-        songDB.forEach {
-            fc.saveSongFile(it.value)
+        songDB.getValues().forEach {
+            fc.saveSongFile(it)
         }
         setlistDB.forEach {
             fc.saveSetFile(it.value)

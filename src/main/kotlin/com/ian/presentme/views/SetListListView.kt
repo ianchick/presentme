@@ -92,7 +92,7 @@ class SetListListView: View() {
                 populateSetList(set)
                 val songs = mutableListOf<Song>()
                 set.songIds.forEach {
-                    songs.add(UserSession.songDB[it] as Song)
+                    songs.add(UserSession.songDB.getSong(it))
                 }
                 fire(UpdateSlidesFlowViewEvent(songs))
             }
@@ -108,7 +108,7 @@ class SetListListView: View() {
                 val songs = mutableListOf<Song>()
                 set.songIds.forEach {
                     print(it)
-                    songs.add(UserSession.songDB[it] as Song)
+                    songs.add(UserSession.songDB.getSong(it))
                 }
                 fire(UpdateSlidesFlowViewEvent(songs))
             }
@@ -141,9 +141,7 @@ class SetListListView: View() {
     private fun populateSetList(setList: SetList) {
         set_list_listview.items.clear()
         setList.songIds.forEach {
-            if (UserSession.songDB[it] != null) {
-                set_list_listview.items.add(UserSession.songDB[it])
-            }
+            set_list_listview.items.add(UserSession.songDB.getSong(it))
         }
     }
 
@@ -158,7 +156,7 @@ class SetListListView: View() {
                 val songs = mutableListOf<Song>()
                 activeSet?.let { set ->
                     set.songIds.forEach {
-                        val song = UserSession.songDB[it]
+                        val song = UserSession.songDB.getSong(it)
                         if (song != null) {
                             songs.add(song)
                         }
@@ -176,7 +174,7 @@ class SetListListView: View() {
                 fire(UpdateSetListEvent(set))
                 val songs = mutableListOf<Song>()
                 set.songIds.forEach {
-                    songs.add(UserSession.songDB[it] as Song)
+                    songs.add(UserSession.songDB.getSong(it))
                 }
                 fire(UpdateSlidesFlowViewEvent(songs))
             }
