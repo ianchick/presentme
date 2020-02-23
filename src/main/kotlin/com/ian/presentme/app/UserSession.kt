@@ -2,6 +2,7 @@ package com.ian.presentme.app
 
 import com.ian.presentme.app.PreferenceController.Companion.SET_IDS
 import com.ian.presentme.app.PreferenceController.Companion.SONG_IDS
+import com.ian.presentme.models.SetDatabase
 import com.ian.presentme.models.SetList
 import com.ian.presentme.models.Song
 import com.ian.presentme.models.SongDatabase
@@ -9,7 +10,7 @@ import java.util.regex.Pattern
 
 object UserSession {
     val songDB = SongDatabase()
-    val setlistDB = mutableMapOf<Int, SetList>()
+    val setlistDB = SetDatabase()
     val songIds = mutableListOf<Int>()
     val setIds = mutableListOf<Int>()
 
@@ -23,7 +24,7 @@ object UserSession {
         }
         val setlists = fc.getSetlistFiles()
         setlists.forEach { set ->
-            setlistDB[set.id] = set
+            setlistDB.setSetList(set.id, set)
         }
         val digitsPattern = Pattern.compile("\\d+")
         val songMatches = digitsPattern.matcher(pc.getPreferences(SONG_IDS))
@@ -37,7 +38,7 @@ object UserSession {
     }
 
     fun addSet(setList: SetList) {
-        setlistDB[setList.id] = setList
+        setlistDB.setSetList(setList.id, setList)
         setIds.add(setList.id)
     }
 
@@ -50,8 +51,8 @@ object UserSession {
         songDB.getValues().forEach {
             fc.saveSongFile(it)
         }
-        setlistDB.forEach {
-            fc.saveSetFile(it.value)
+        setlistDB.getValues().forEach {
+            fc.saveSetFile(it)
         }
     }
 }

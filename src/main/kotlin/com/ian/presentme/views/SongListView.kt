@@ -61,17 +61,7 @@ class SongListView : View() {
                     "Are you sure you want to delete ${songlist_listview.selectionModel.selectedItem}?",
                     "") { button ->
                 if (button == ButtonType.OK) {
-                    UserSession.setlistDB.values.forEach { set ->
-                        val list = mutableListOf<Int>()
-                        set.songIds.forEach {
-                            if (it == song.id) {
-                                list.add(set.id)
-                            }
-                        }
-                        list.forEach {id ->
-                            UserSession.setlistDB[id]?.songIds?.remove(song.id)
-                        }
-                    }
+                    UserSession.setlistDB.removeSong(song.id)
                     UserSession.songDB.removeSong(song.id)
                     populateSongsList()
                     fire(DeselectSongsListItemEvent)

@@ -27,7 +27,6 @@ class SetListListView: View() {
     private val set_list_set_combo: ComboBox<SetList> by fxid()
 
     // Currently active Set List
-    private var activeSet: SetList? = null
     private val pc = PreferenceController()
 
     init {
@@ -39,13 +38,8 @@ class SetListListView: View() {
         }
         // Update the set list with the given list and set to active
         subscribe<UpdateSetListEvent> { event ->
-            event.setList?.let { set ->
-                activeSet = event.setList
-                pc.setPreference(ACTIVE_SET, set.title)
-                set_list_label.text = set.title
-            }
             refreshSetComboBox()
-            activeSet?.let {
+            UserSession.setlistDB.getActiveSet()?.let {
                 populateSetList(it)
             }
         }
@@ -56,9 +50,9 @@ class SetListListView: View() {
         subscribe<AddSongToActiveSetList> { event ->
             val song = event.song
             song.slides.let {
-                activeSet?.let { set ->
+                UserSession.setlistDB.getActiveSet()?.let { set ->
                     set.songIds.add(song.id)
-                    UserSession.setlistDB[set.id] = set
+                    UserSession.setlistDB.setSetList(set.id, set)
                     fire(UpdateSetListEvent(set))
                 }
             }
@@ -74,7 +68,7 @@ class SetListListView: View() {
             }
         }
         refreshSetComboBox()
-        set_list_set_combo.selectionModel.select(activeSet)
+        set_list_set_combo.selectionModel.select(UserSession.setlistDB.getActiveSet())
 
         set_list_up.action {
             moveUp()
@@ -82,12 +76,19 @@ class SetListListView: View() {
         set_list_down.action {
             moveDown()
         }
+
+        set_list_set_combo.valueProperty().onChange {
+            it?.let {
+                pc.setPreference(ACTIVE_SET, it.title)
+                updateActiveSet(it)
+            }
+        }
     }
 
     private fun moveDown() {
         val index = set_list_listview.selectionModel.selectedIndex
         if (index < set_list_listview.items.size - 1 && index != -1) {
-            activeSet?.let { set ->
+            UserSession.setlistDB.getActiveSet()?.let { set ->
                 set.songIds[index] = set.songIds[index + 1].also { set.songIds[index + 1] = set.songIds[index] }
                 populateSetList(set)
                 val songs = mutableListOf<Song>()
@@ -102,7 +103,7 @@ class SetListListView: View() {
     private fun moveUp() {
         val index = set_list_listview.selectionModel.selectedIndex
         if (index > 0) {
-            activeSet?.let { set ->
+            UserSession.setlistDB.getActiveSet()?.let { set ->
                 set.songIds[index] = set.songIds[index - 1].also { set.songIds[index - 1] = set.songIds[index] }
                 populateSetList(set)
                 val songs = mutableListOf<Song>()
@@ -117,20 +118,15 @@ class SetListListView: View() {
 
     private fun refreshSetComboBox() {
         set_list_set_combo.items.clear()
-        set_list_set_combo.items.addAll(UserSession.setlistDB.values)
-        set_list_set_combo.selectionModel.select(activeSet)
-        set_list_set_combo.valueProperty().onChange {
-            it?.let {
-                pc.setPreference(ACTIVE_SET, it.title)
-                updateActiveSet(it)
-            }
-        }
+        set_list_set_combo.items.addAll(UserSession.setlistDB.getValues())
+        set_list_set_combo.selectionModel.select(UserSession.setlistDB.getActiveSet())
     }
 
     private fun updateActiveSet(set: SetList) {
-        activeSet = set
+        UserSession.setlistDB.setActiveSet(set.id)
         set_list_label.text = set.title
         populateSetList(set)
+        println(UserSession.setlistDB.getActiveSet())
     }
 
     /**
@@ -154,12 +150,10 @@ class SetListListView: View() {
             // Uncaught IndexOutOfBounds exception if this null check isn't here
             newValue?.let {
                 val songs = mutableListOf<Song>()
-                activeSet?.let { set ->
+                UserSession.setlistDB.getActiveSet()?.let { set ->
                     set.songIds.forEach {
                         val song = UserSession.songDB.getSong(it)
-                        if (song != null) {
-                            songs.add(song)
-                        }
+                        songs.add(song)
                     }
                     fire(UpdateSlidesFlowViewEvent(songs))
                     fire(DeselectSongsListItemEvent)
@@ -167,10 +161,10 @@ class SetListListView: View() {
             }
         })
         set_list_listview.onUserSelect(2) {
-            activeSet?.let { set ->
+            UserSession.setlistDB.getActiveSet()?.let { set ->
                 val index = set_list_listview.selectionModel.selectedIndexProperty().get()
                 set.songIds.removeAt(index)
-                UserSession.setlistDB[set.id] = set
+                UserSession.setlistDB.setSetList(set.id, set)
                 fire(UpdateSetListEvent(set))
                 val songs = mutableListOf<Song>()
                 set.songIds.forEach {
