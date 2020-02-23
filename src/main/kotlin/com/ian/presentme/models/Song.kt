@@ -1,6 +1,6 @@
 package com.ian.presentme.models
 
-data class Song(val id: Int, val title: String, val artist: String = "") {
+data class Song(val id: Int, val title: String, var artist: String = "") {
     var slides = mutableListOf<Slide>()
     /**
      * For showing song title in the song list

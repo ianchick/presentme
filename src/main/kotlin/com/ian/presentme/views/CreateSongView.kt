@@ -17,6 +17,7 @@ class CreateSongView : View("Create New Song") {
     override val root: VBox by fxml()
     val create_song_title: TextField by fxid()
     val create_song_lyrics: TextArea by fxid()
+    val create_song_artist: TextField by fxid()
     val create_song_save: Button by fxid()
 
     init {
@@ -46,6 +47,7 @@ class CreateSongView : View("Create New Song") {
             val song = Song(Utilities.generateSongId(), title)
             UserSession.addSong(song)
             song.slides = songSlidesList
+            song.artist = create_song_artist.text
             val fs = FileStorageController()
             fs.saveSongFile(song)
             fire(AddSongToSongListEvent(song))

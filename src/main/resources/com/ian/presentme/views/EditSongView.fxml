@@ -7,13 +7,12 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      prefHeight="400.0" prefWidth="600.0" spacing="10">
+      xmlns:fx="http://javafx.com/fxml" spacing="10">
     <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
 
-    <TextField fx:id="create_song_title" promptText="Title..."/>
-    <TextField fx:id="create_song_artist" promptText="Artist..."/>
-    <TextArea fx:id="create_song_lyrics" promptText="Lyrics..."/>
-    <Button fx:id="create_song_save" text="Save"/>
+    <TextField fx:id="edit_song_title" promptText="Title..."/>
+    <TextField fx:id="edit_song_artist" promptText="Artist..."/>
+    <TextArea fx:id="edit_song_lyrics" promptText="Lyrics..."/>
+    <Button fx:id="edit_song_save" text="Save"/>
 
 </VBox>
