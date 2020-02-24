@@ -53,14 +53,18 @@ class MainView : View("PresentMe") {
 
         // Hide the second child of center pane (backgrounds view)
         subscribe<ToggleBackgroundViewEvent> { event ->
-            if (event.toShow) {
-                main_center_split_pane_wrapper.add(BackgroundFlowView::class)
-                main_center_split_pane_wrapper.setDividerPosition(0, pc.getPreferences(CENTER_SP_DIV_HEIGHT).toDouble())
-            } else {
-                pc.setPreference(CENTER_SP_DIV_HEIGHT, main_center_split_pane_wrapper.dividerPositions[0].toString())
-                val backgroundFlowView = main_center_split_pane_wrapper.items[1]
-                main_center_split_pane_wrapper.items.remove(backgroundFlowView)
-            }
+            toggleBackgroundFlowViewVisbility(event)
+        }
+    }
+
+    private fun toggleBackgroundFlowViewVisbility(event: ToggleBackgroundViewEvent) {
+        if (event.toShow) {
+            main_center_split_pane_wrapper.add(BackgroundFlowView::class)
+            main_center_split_pane_wrapper.setDividerPosition(0, pc.getPreferences(CENTER_SP_DIV_HEIGHT).toDouble())
+        } else {
+            pc.setPreference(CENTER_SP_DIV_HEIGHT, main_center_split_pane_wrapper.dividerPositions[0].toString())
+            val backgroundFlowView = main_center_split_pane_wrapper.items[1]
+            main_center_split_pane_wrapper.items.remove(backgroundFlowView)
         }
     }
 

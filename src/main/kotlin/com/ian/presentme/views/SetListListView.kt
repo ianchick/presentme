@@ -17,7 +17,7 @@ import javafx.stage.Modality
 import tornadofx.*
 import java.io.File
 
-class SetListListView: View() {
+class SetListListView : View() {
     override val root: VBox by fxml()
     private val set_list_create_button: Button by fxid()
     private val set_list_listview: ListView<Song> by fxid()
@@ -71,10 +71,10 @@ class SetListListView: View() {
         set_list_set_combo.selectionModel.select(UserSession.setlistDB.getActiveSet())
 
         set_list_up.action {
-            moveUp()
+            moveSongUp()
         }
         set_list_down.action {
-            moveDown()
+            moveSongDown()
         }
 
         set_list_set_combo.valueProperty().onChange {
@@ -85,7 +85,7 @@ class SetListListView: View() {
         }
     }
 
-    private fun moveDown() {
+    private fun moveSongDown() {
         val index = set_list_listview.selectionModel.selectedIndex
         if (index < set_list_listview.items.size - 1 && index != -1) {
             UserSession.setlistDB.getActiveSet()?.let { set ->
@@ -100,7 +100,7 @@ class SetListListView: View() {
         }
     }
 
-    private fun moveUp() {
+    private fun moveSongUp() {
         val index = set_list_listview.selectionModel.selectedIndex
         if (index > 0) {
             UserSession.setlistDB.getActiveSet()?.let { set ->

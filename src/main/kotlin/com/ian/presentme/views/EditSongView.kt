@@ -29,25 +29,29 @@ class EditSongView(val song: Song): View() {
         edit_song_lyrics.text = sb.toString().trim()
 
         edit_song_save.action {
-            val title = edit_song_title
-            if (title.text.isEmpty()) {
-                title.addClass(Styles.error)
-            } else {
-                val songSlidesList = mutableListOf<Slide>()
-                val lyrics = edit_song_lyrics.text
-                val splitLyricsByNewline = lyrics.split("\n\n")
-                splitLyricsByNewline.forEach {
-                    songSlidesList.add(Slide(it))
-                }
-                // Create song, serialize, write to file
-                UserSession.addSong(song)
-                song.slides = songSlidesList
-                song.artist = edit_song_artist.text
-                val fs = FileStorageController()
-                fs.saveSongFile(song)
-                close()
-                fire(UpdateSlidesFlowViewEvent(listOf(song)))
+            save()
+        }
+    }
+
+    private fun save() {
+        val title = edit_song_title
+        if (title.text.isEmpty()) {
+            title.addClass(Styles.error)
+        } else {
+            val songSlidesList = mutableListOf<Slide>()
+            val lyrics = edit_song_lyrics.text
+            val splitLyricsByNewline = lyrics.split("\n\n")
+            splitLyricsByNewline.forEach {
+                songSlidesList.add(Slide(it))
             }
+            // Create song, serialize, write to file
+            UserSession.addSong(song)
+            song.slides = songSlidesList
+            song.artist = edit_song_artist.text
+            val fs = FileStorageController()
+            fs.saveSongFile(song)
+            close()
+            fire(UpdateSlidesFlowViewEvent(listOf(song)))
         }
     }
 }
