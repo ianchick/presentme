@@ -126,7 +126,6 @@ class SetListListView: View() {
         UserSession.setlistDB.setActiveSet(set.id)
         set_list_label.text = set.title
         populateSetList(set)
-        println(UserSession.setlistDB.getActiveSet())
     }
 
     /**

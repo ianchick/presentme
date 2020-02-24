@@ -24,7 +24,6 @@ class EditSongView(val song: Song): View() {
         edit_song_artist.text = song.artist
         val sb = StringBuilder()
         song.slides.forEach {
-            println(it)
             sb.append("${it.content}\n\n")
         }
         edit_song_lyrics.text = sb.toString().trim()

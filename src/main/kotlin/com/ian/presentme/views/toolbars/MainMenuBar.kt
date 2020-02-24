@@ -50,7 +50,7 @@ class MainMenuBar: View() {
             content.split("\\n\\n").forEach {
                 song.slides.add(Slide(it.replace("\\n", "\n")))
             }
-            UserSession.songDB.setSong(song.id, song)
+            UserSession.songDB.addSong(song)
         }
         UserSession.updateFiles()
         fire(UpdateSongListEvent)
