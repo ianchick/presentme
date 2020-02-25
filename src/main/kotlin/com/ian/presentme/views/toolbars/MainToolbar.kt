@@ -11,7 +11,9 @@ import com.ian.presentme.views.PresentationView
 import javafx.scene.control.Button
 import javafx.scene.control.ComboBox
 import javafx.scene.control.ToolBar
+import javafx.stage.Modality
 import javafx.stage.Screen
+import javafx.stage.Stage
 import javafx.stage.StageStyle
 import tornadofx.*
 
@@ -65,26 +67,26 @@ class MainToolbar: View() {
 
     private fun toggleLiveView() {
         if (isLive) { // Close
+            println("CLOSE")
             isLive = false
             liveView.close()
             main_toolbar_start.text = START
         } else { // Open
-            if (Screen.getScreens().size > 1) {
-                val displayBounds = Screen.getScreens()[1].bounds
-                val stage = liveView.openWindow(stageStyle = StageStyle.UNDECORATED)
-                stage?.let {
-                    it.x = displayBounds.minX
-                    it.y = displayBounds.minY
-                    it.width = displayBounds.width
-                    it.height = displayBounds.height
-                    it.isFullScreen = true
-                }
-            } else {
-                liveView.openWindow()
-            }
-            liveView.currentStage?.isAlwaysOnTop = true
             isLive = true
             main_toolbar_start.text = STOP
+            if (Screen.getScreens().size > 1) {
+                val displayBounds = Screen.getScreens()[1].bounds
+                // Not sure why I need to set owner, but it works this way.
+                val window = Stage(StageStyle.UNDECORATED)
+                window.isAlwaysOnTop = true
+                liveView.openModal(StageStyle.UNDECORATED, owner = window, modality = Modality.NONE)
+                liveView.modalStage?.x = displayBounds.minX
+                liveView.modalStage?.y = displayBounds.minY
+                liveView.modalStage?.width = displayBounds.width
+                liveView.modalStage?.height = displayBounds.height
+            } else {
+                liveView.openModal()
+            }
         }
     }
 

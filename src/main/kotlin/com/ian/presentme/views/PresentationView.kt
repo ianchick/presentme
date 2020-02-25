@@ -12,7 +12,7 @@ import javafx.scene.text.Text
 import javafx.util.Duration
 import tornadofx.*
 
-class PresentationView : View() {
+class PresentationView : Fragment() {
     companion object {
         private const val TRANSITION_SPEED = 1000.0
     }
