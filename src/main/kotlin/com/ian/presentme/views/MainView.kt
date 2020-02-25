@@ -56,7 +56,6 @@ class MainView : View("PresentMe") {
         }
         main_center_split_pane_wrapper.setDividerPosition(0, pc.getPreferences(CENTER_SP_DIV_HEIGHT).toDouble())
         if (pc.getPreferences(PREVIEW_VIEW_SHOWN).toBoolean()) {
-            println("SHOW RIGHT PANE")
             rightPane.add(PreviewView::class)
             // Placeholder
             rightPane.add(VBox())
@@ -87,6 +86,12 @@ class MainView : View("PresentMe") {
     private fun togglePreviewViewVisibility(toShow: Boolean) {
         if (toShow) {
             main_split_pane.add(rightPane)
+            if (rightPane.items.size == 0) {
+                rightPane.add(PreviewView::class)
+            }
+            if (rightPane.items.size == 1) {
+                rightPane.add(VBox())
+            }
             // Placeholder
             main_split_pane.setDividerPosition(1, pc.getPreferences(PREVIEW_DIV_HEIGHT).toDouble())
         } else {
