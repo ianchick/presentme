@@ -5,7 +5,6 @@ import com.ian.presentme.app.PreferenceController.Companion.BACKGROUND_FLOW_SHOW
 import com.ian.presentme.app.PreferenceController.Companion.CENTER_SP_DIV_HEIGHT
 import com.ian.presentme.app.PreferenceController.Companion.MAIN_LEFT_SP_DIV_POS
 import com.ian.presentme.app.PreferenceController.Companion.MAIN_RIGHT_SP_DIV_POS
-import com.ian.presentme.app.PreferenceController.Companion.PREVIEW_DIV_HEIGHT
 import com.ian.presentme.app.PreferenceController.Companion.PREVIEW_VIEW_SHOWN
 import com.ian.presentme.app.PreferenceController.Companion.SET_IDS
 import com.ian.presentme.app.PreferenceController.Companion.SONG_IDS
@@ -93,9 +92,9 @@ class MainView : View("PresentMe") {
                 rightPane.add(VBox())
             }
             // Placeholder
-            main_split_pane.setDividerPosition(1, pc.getPreferences(PREVIEW_DIV_HEIGHT).toDouble())
+            main_split_pane.setDividerPosition(1, pc.getPreferences(MAIN_RIGHT_SP_DIV_POS).toDouble())
         } else {
-            pc.setPreference(PREVIEW_DIV_HEIGHT, main_split_pane.dividerPositions[1].toString())
+            pc.setPreference(MAIN_RIGHT_SP_DIV_POS, main_split_pane.dividerPositions[1].toString())
             val previewView = main_split_pane.items[2]
             main_split_pane.items.remove(previewView)
         }

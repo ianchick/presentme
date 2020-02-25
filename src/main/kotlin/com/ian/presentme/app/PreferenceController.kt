@@ -15,7 +15,6 @@ class PreferenceController {
         const val WINDOW_SIZE_WIDTH = "windowSizeWidth"
         const val WINDOW_SIZE_HEIGHT = "windowSizeHeight"
         const val CENTER_SP_DIV_HEIGHT = "centerSplitPaneDivHeight"
-        const val PREVIEW_DIV_HEIGHT = "previewDivHeight"
         const val FONT_SIZE = "fontSize"
         const val SONG_IDS = "songIds"
         const val SET_IDS =  "setIds"
@@ -73,12 +72,12 @@ class PreferenceController {
         defaultProperties[WINDOW_SIZE_WIDTH] = "800"
         defaultProperties[WINDOW_SIZE_HEIGHT] = "600"
         defaultProperties[CENTER_SP_DIV_HEIGHT] = "0.33"
-        defaultProperties[PREVIEW_DIV_HEIGHT] = "0.33"
         defaultProperties[FONT_SIZE] = "12.0"
         defaultProperties[SET_IDS] =  "0"
         defaultProperties[SONG_IDS] = "0"
         defaultProperties[BACKGROUND_FLOW_SHOWN] = "true"
         defaultProperties[PREVIEW_VIEW_SHOWN] = "true"
+        defaultProperties[MAIN_RIGHT_SP_DIV_POS] = "0.66"
         defaultProperties.store(outputStream, null)
         outputStream.close()
     }
