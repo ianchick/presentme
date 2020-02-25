@@ -1,11 +1,12 @@
 package com.ian.presentme.views.toolbars
 
-import com.ian.presentme.app.FileStorageController
 import com.ian.presentme.app.PreferenceController
 import com.ian.presentme.app.PreferenceController.Companion.BACKGROUND_FLOW_SHOWN
+import com.ian.presentme.app.PreferenceController.Companion.PREVIEW_VIEW_SHOWN
 import com.ian.presentme.app.UserSession
 import com.ian.presentme.app.Utilities
 import com.ian.presentme.events.ToggleBackgroundViewEvent
+import com.ian.presentme.events.TogglePreviewViewEvent
 import com.ian.presentme.events.UpdateSongListEvent
 import com.ian.presentme.models.Slide
 import com.ian.presentme.models.Song
@@ -18,18 +19,20 @@ import tornadofx.*
 class MainMenuBar: View() {
     override val root: MenuBar by fxml()
     private val main_menu_view_bg: CheckMenuItem by fxid()
+    private val main_menu_view_preview: CheckMenuItem by fxid()
     private val main_menu_import_songs: MenuItem by fxid()
     private val main_menu_file_refresh: MenuItem by fxid()
     private val pc = PreferenceController()
-    private val fc = FileStorageController()
 
     init {
         main_menu_view_bg.isSelected = pc.getPreferences(BACKGROUND_FLOW_SHOWN).toBoolean()
+        main_menu_view_preview.isSelected = pc.getPreferences(PREVIEW_VIEW_SHOWN).toBoolean()
         main_menu_view_bg.action { toggleBackgroundsView() }
         main_menu_import_songs.action{ bulkImportSongs() }
         main_menu_file_refresh.action {
             fire(UpdateSongListEvent)
         }
+        main_menu_view_preview.action { togglePreviewView() }
     }
 
     private fun toggleBackgroundsView() {
@@ -54,5 +57,15 @@ class MainMenuBar: View() {
         }
         UserSession.updateFiles()
         fire(UpdateSongListEvent)
+    }
+
+    private fun togglePreviewView() {
+        if (main_menu_view_preview.isSelected) {
+            pc.setPreference(PREVIEW_VIEW_SHOWN, "true")
+            fire(TogglePreviewViewEvent(true))
+        } else {
+            pc.setPreference(PREVIEW_VIEW_SHOWN, "false")
+            fire(TogglePreviewViewEvent(false))
+        }
     }
 }
