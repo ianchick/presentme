@@ -85,7 +85,7 @@ class MainToolbar: View() {
                 liveView.modalStage?.width = displayBounds.width
                 liveView.modalStage?.height = displayBounds.height
             } else {
-                liveView.openModal()
+                liveView.openModal(modality = Modality.NONE)
             }
         }
     }
