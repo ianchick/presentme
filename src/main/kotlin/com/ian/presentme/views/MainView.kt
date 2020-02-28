@@ -11,6 +11,7 @@ import com.ian.presentme.app.PreferenceController.Companion.SONG_IDS
 import com.ian.presentme.app.PreferenceController.Companion.WINDOW_SIZE_HEIGHT
 import com.ian.presentme.app.PreferenceController.Companion.WINDOW_SIZE_WIDTH
 import com.ian.presentme.app.UserSession
+import com.ian.presentme.events.ClosePresentationViewEvent
 import com.ian.presentme.events.ToggleBackgroundViewEvent
 import com.ian.presentme.events.TogglePreviewViewEvent
 import com.ian.presentme.views.toolbars.MainMenuBar
@@ -20,6 +21,7 @@ import javafx.scene.control.SplitPane
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.VBox
 import tornadofx.*
+import kotlin.system.exitProcess
 
 class MainView : View("PresentMe") {
     override val root: BorderPane by fxml()
@@ -120,6 +122,9 @@ class MainView : View("PresentMe") {
                 pc.setPreference(SONG_IDS, UserSession.songIds.toString())
                 pc.setPreference(SET_IDS, UserSession.setIds.toString())
                 UserSession.updateFiles()
+
+                fire(ClosePresentationViewEvent)
+                exitProcess(0)
             }
         }
     }

@@ -108,7 +108,6 @@ class SetListListView : View() {
                 populateSetList(set)
                 val songs = mutableListOf<Song>()
                 set.songIds.forEach {
-                    print(it)
                     songs.add(UserSession.songDB.getSong(it))
                 }
                 fire(UpdateSlidesFlowViewEvent(songs))

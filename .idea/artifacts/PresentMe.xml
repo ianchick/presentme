@@ -1,0 +1,31 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" build-on-make="true" name="PresentMe">
+    <output-path>$PROJECT_DIR$/out/artifacts/PresentMe</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="com.ian.presentme.app.PresentMeApp" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="nativeBundle" value="dmg" />
+        <option name="title" value="Presenter" />
+        <option name="vendor" value="" />
+        <option name="version" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="PresentMe.jar">
+        <element id="module-output" name="PresentMe" />
+      </element>
+      <element id="library" level="project" name="com.google.code.gson:gson:2.8.5" />
+      <element id="library" level="project" name="Maven: no.tornado:tornadofx:1.7.17" />
+      <element id="library" level="project" name="Maven: org.glassfish:javax.json:1.1.2" />
+      <element id="library" level="project" name="Maven: javax.json:javax.json-api:1.1.2" />
+      <element id="library" level="project" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.60" />
+      <element id="library" level="project" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.60" />
+      <element id="library" level="project" name="Maven: org.jetbrains.kotlin:kotlin-reflect:1.2.60" />
+      <element id="library" level="project" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.2.60" />
+      <element id="library" level="project" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-common:1.2.60" />
+      <element id="library" level="project" name="Maven: org.jetbrains:annotations:13.0" />
+    </root>
+  </artifact>
+</component>

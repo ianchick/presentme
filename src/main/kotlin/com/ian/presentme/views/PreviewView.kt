@@ -12,7 +12,7 @@ import tornadofx.*
 
 class PreviewView: View() {
     companion object {
-        private const val RATIO = 0.33
+        private const val RATIO = 0.25
         private const val TRANSITION_SPEED = 1000.0
     }
     override val root: StackPane by fxml()

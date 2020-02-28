@@ -14,7 +14,6 @@ import javafx.scene.control.ToolBar
 import javafx.stage.Modality
 import javafx.stage.Screen
 import javafx.stage.Stage
-import javafx.stage.StageStyle
 import tornadofx.*
 
 class MainToolbar: View() {
@@ -67,7 +66,6 @@ class MainToolbar: View() {
 
     private fun toggleLiveView() {
         if (isLive) { // Close
-            println("CLOSE")
             isLive = false
             liveView.close()
             main_toolbar_start.text = START
@@ -77,9 +75,9 @@ class MainToolbar: View() {
             if (Screen.getScreens().size > 1) {
                 val displayBounds = Screen.getScreens()[1].bounds
                 // Not sure why I need to set owner, but it works this way.
-                val window = Stage(StageStyle.UNDECORATED)
+                val window = Stage()
                 window.isAlwaysOnTop = true
-                liveView.openModal(StageStyle.UNDECORATED, owner = window, modality = Modality.NONE)
+                liveView.openModal(owner = window, modality = Modality.NONE)
                 liveView.modalStage?.x = displayBounds.minX
                 liveView.modalStage?.y = displayBounds.minY
                 liveView.modalStage?.width = displayBounds.width
