@@ -12,6 +12,7 @@ class SlidesFlowView : View() {
     val slides_flow_pane: FlowPane by fxid()
     private val slides_scroll_wrapper: ScrollPane by fxid()
     var songsSource: List<Song> = listOf()
+    var activeSlide: SlidePane? = null
 
     init {
         // Flow pane listen for window resize and focus traversable
